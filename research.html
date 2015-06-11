@@ -1,0 +1,107 @@
+<html><head><title></title></head><body><h1>「IoTに基づくスマートホームシステムの設計と実装」のあらまし</h1>
+<h2>はじめに</h2>
+<p>本論文は、スマートホームシステムのフレームワークの構築への検討である。</p>
+<p>本システムは、ユビキタスセンシングネットワーク、データーベース、中央コントロールシステムとリモコン端末からなっている。このシステムは、居場所の環境要素を検出し情報源として家屋にある家電用品を遠隔操作できるものである。本研究に通して、スマートホームシステムの構築方法を検討しIoTの要素を理解し更に発展することを目的とする。</p>
+<h2>システムデザイン</h2>
+<p>普通には、スマートホームに対して、温度、湿度、照度が基本的な環境要素であって、インテリジェントカーテンも基本的なインテリジェント家電用品である。それらを例に考えて以下のようになる。</p>
+<p><img src="http://izumisagiri.github.io/system.png" alt="system" title="システムデザイン" /></p>
+<h2>ハードウェアとソフトウェアの選定</h2>
+<h3>温度センサー</h3>
+<p>DS18B20を選定する。測定温度範囲は-55℃～+125℃で、精度は±0.5℃であって、1-Wireバス上で通信を行う。電源動作範囲は3.0V～5.5Vである。</p>
+<h3>湿度センサー</h3>
+<p>AM2001を選定する。電源動作範囲は4.5V～6Vである。精度は±3%RHである。アナログセンサである。</p>
+<h3>A/D&amp;D/Aコンバータチップ</h3>
+<p>PCF8591を選定する。電源動作範囲は2.5V～6Vである。I2Cインターフェース上で通信を行う。</p>
+<h3>マイコン</h3>
+<p>最も基本的なマイコンSTC89C52RCを選定する。C言語を使ってプログラミングする。</p>
+<h3>中央コントローラー</h3>
+<p>誰も持っているパソコンを選定する。</p>
+<h3>近距離無線通信モジュール</h3>
+<p>現在、ユビキタスネットワークのプロトコールにはRFやBluetooth、WiFi、Zigbee、Z-Waveがある。WiFiが省エネではなく、Bluetoothの通信距離がただ10ｍであり、ZigbeeとZ-Waveが複雑なユビキタスネットワーク向けプロトコールであると考えていてRFを選定する。ノルディック社のnRF24L01は2.4GHz帯を使って通信を行っている。この2.4GHz帯は免許不要で自由に利用できる。</p>
+<h3>中央コントロールソフトウェアの開発の言語</h3>
+<p>データーベースを使う必要及びリモコン端末が使える希望があるので、C#+SQLSERVER+ASP.NETを選定する。C#はオブジェクト指向言語であり、SQLSERVER及びASP.NETと繋ぎやすい。</p>
+<h3>サーバーの構築手法</h3>
+<p>パソコンでIISをインストールしてnat123が提供した無料ドメインを取得してサーバーを構築する。</p>
+<h2>温度及び湿度を検出するプログラムの開発</h2>
+<p>DS18B20の初期化</p>
+<p><img src="http://izumisagiri.github.io/initiate.png" alt="initiate" title="初期化" />;</p>
+<p>初期化プログラムは以下のようになる。</p>
+<pre><code>void DS18B20_Reset(void)
+{
+    unsigned int i;
+
+    DS_Data = 0;
+    i = 103;
+    while(i&gt;0)  i--;
+
+    DS_Data = 1;
+    i = 4;
+    while(i&gt;0)  i--;
+}
+</code></pre>
+<p>DS18B20の入力と出力</p>
+<p><img src="http://izumisagiri.github.io/0and1.png" alt="0and1" title="入力と出力" />;</p>
+<p>入力と出力プログラムは以下のようになる。</p>
+<pre><code>bit DS18B20_ReadBit(void)                       //1bitを読み込む
+{
+    unsigned int i;
+    bit dat;
+
+    DS_Data = 0;
+    i++;
+    DS_Data = 1;
+    i++;
+    i++;
+    dat = DS_Data;
+
+    i = 8;
+    while(i&gt;0)  i--;
+
+    return (dat);
+}
+uchar DS18B20_ReadByte(void)                        //1Byteを読み込む
+{
+    unsigned char i,j,dat;
+    
+    dat=0;
+    for(i=1; i&lt;=8; i++)
+    {
+        j = DS18B20_ReadBit();
+        dat=(j&lt;&lt;7)|(dat&gt;&gt;1); 
+    }
+
+    return(dat);
+}
+void DS18B20_WriteByte(unsigned char dat)           //1Byteを
+{
+    unsigned int i;
+    unsigned char j, k;
+    bit b;
+
+    k = dat;
+
+    for(j=1; j&lt;=8; j++)
+    {
+        b = k &amp; 0x01;
+        k = k &gt;&gt; 1;
+        if(b)                                   //写1
+        {
+            DS_Data = 0;
+            i++; i++;
+            DS_Data = 1;
+            i = 8;
+            while(i&gt;0) i--;
+        }
+        else
+        {
+            DS_Data = 0;                        //写0
+            i = 8;
+            while(i&gt;0)  i--;
+            DS_Data = 1;
+            i++; i++;
+        }
+    
+    }
+}
+</code></pre>
+</body></html>
