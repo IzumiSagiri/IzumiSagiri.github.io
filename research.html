@@ -23,6 +23,7 @@
 <h3>サーバーの構築手法</h3>
 <p>パソコンでIISをインストールしてnat123が提供した無料ドメインを取得してサーバーを構築する。</p>
 <h2>温度及び湿度を検出するプログラムの開発</h2>
+<h3>温度を検出するプログラム</h3>
 <p>DS18B20の初期化</p>
 <p><img src="http://izumisagiri.github.io/initiate.png" alt="initiate" title="初期化" />;</p>
 <p>初期化プログラムは以下のようになる。</p>
@@ -72,7 +73,7 @@ uchar DS18B20_ReadByte(void)                        //1Byteを読み込む
 
     return(dat);
 }
-void DS18B20_WriteByte(unsigned char dat)           //1Byteを
+void DS18B20_WriteByte(unsigned char dat)               //1Byteを書き込む
 {
     unsigned int i;
     unsigned char j, k;
@@ -84,7 +85,7 @@ void DS18B20_WriteByte(unsigned char dat)           //1Byteを
     {
         b = k &amp; 0x01;
         k = k &gt;&gt; 1;
-        if(b)                                   //写1
+        if(b)                           //1を書き込む
         {
             DS_Data = 0;
             i++; i++;
@@ -94,13 +95,321 @@ void DS18B20_WriteByte(unsigned char dat)           //1Byteを
         }
         else
         {
-            DS_Data = 0;                        //写0
+            DS_Data = 0;                    //0を書き込む
             i = 8;
             while(i&gt;0)  i--;
             DS_Data = 1;
             i++; i++;
         }
     
+    }
+}
+</code></pre>
+<p>温度を検出するプログラムは以下のようになる。</p>
+<pre><code>void DS18B20_Change(void)                       //DS18B20を始動する
+{
+    DS18B20_Reset();                        //初期化
+    delayDSMs(5);
+    DS18B20_WriteByte(0xcc);                    //DS18B20は一つだけであるから、ROMを使わない
+    DS18B20_WriteByte(0x44);                    //温度検出を始める
+}
+int DS18B20_GetTemp()                           //温度検出の結果を読み込む
+{
+    float t;
+    unsigned char a, b;
+    int temp;
+    
+    DS18B20_Reset();                        //初期化
+    delayDSMs(5);
+    DS18B20_WriteByte(0xcc);                        //ROMを使わない
+    DS18B20_WriteByte(0xbe);                        //結果を読み込む
+    a=DS18B20_ReadByte();
+    b=DS18B20_ReadByte();
+    
+    temp = b;
+    temp &lt;&lt;= 8;
+    temp = temp|a;                          //データの高位と低位を合成する
+    t = temp*0.0625;                        //デフォルト精度は12ビットであり，即ち0.0625℃である
+    temp = t*10+0.5;
+    
+    return temp;
+}
+</code></pre>
+<h3>湿度を検出するプログラム</h3>
+<p>湿度センサはアナログセンサであるのでA/D&amp;D/Aコンバータチップを動かすプログラムが必要になる。
+PCF8591の初期化
+I2Cを初期化するのはSDA及びSCLをHighにすること。プログラムは以下のようになる。</p>
+<pre><code>void init_IIC()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+}
+</code></pre>
+<p>I2Cの読み込み開始及び終止のプログラム</p>
+<p><img src="http://izumisagiri.github.io/I2C.png" alt="I2C" /></p>
+<pre><code>void start()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SDA=0;
+    delayADDA();
+}
+void stop()
+{
+    SDA=0;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SDA=1;
+    delayADDA();
+}
+</code></pre>
+<p>I2Cのデータコミュニケーション</p>
+<p><img src="http://izumisagiri.github.io/I2Cwrite.png" alt="I2C" /></p>
+<pre><code>void Write_Byte(uchar dat)
+{
+    uchar i;
+    for(i=0;i&lt;8;i++)
+    {
+        SCL=0;
+        delayADDA();
+        if(dat&amp;0x80)
+        {
+            SDA=1;
+        }
+        else
+        {
+            SDA=0;
+        }
+        dat=dat&lt;&lt;1;
+        SCL=1;
+        delayADDA();
+    }
+    SCL=0;
+    delayADDA();
+    SDA=1;
+    delayADDA();    
+}
+uchar Read_Byte()
+{
+    uchar i,dat;
+    SCL=0;
+    delayADDA();
+    SDA=1;
+    delayADDA();
+    for(i=0;i&lt;8;i++)
+    {
+        SCL=1;
+        delayADDA();
+        dat=dat&lt;&lt;1;
+        if(SDA)
+        {
+            dat++;
+        }
+        SCL=0;
+        delayADDA();
+    }
+    return dat;
+}
+</code></pre>
+<h3>acknowledge及びnot acknowledge</h3>
+<p>SCLのクロックに従って送信側から８ビットのデータが出力され、続いて受信側からアクノリッジ信号が返送される。</p>
+<p><img src="http://izumisagiri.github.io/I2Cack.png" alt="ACK" title="ACK" /></p>
+<pre><code>void ack()
+{
+    uchar i=0;
+    SCL=1;
+    delayADDA();
+    while((SDA==1)&amp;&amp;(i&lt;250)) i++;
+    SCL=0;
+    delayADDA();
+}
+void noack()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SCL=0;
+    delayADDA();
+}
+</code></pre>
+<h3>I2Cメインプログラム</h3>
+<pre><code>void DAC_PCF8591(uchar add,uchar dat)
+{
+    start();                          
+    Write_Byte(add);
+    ack();
+    Write_Byte(Control_Byte);
+    ack();
+    Write_Byte(dat);
+    ack();
+    stop();
+}
+uchar ADC_Read(uchar add0,uchar add1,uchar chl)
+{
+    uchar dat;
+    start();
+    Write_Byte(add0);
+    ack();
+    Write_Byte(Control_Byte|chl);
+    ack();
+    start();
+    Write_Byte(add1);
+    ack();
+    dat=Read_Byte();
+    noack();
+    stop();
+    return dat;
+} 
+</code></pre>
+<h2>インテリジェントカーテンの設計</h2>
+<p>モーターでカーテンを動かして、光電スイッチでカーテンの状態を検出する。直流モーターを使って、PWM制御でモーターの速度を変調する。</p>
+<h3>電子回路</h3>
+<p>設計した回路は以下のようになる。</p>
+<p>電源のレギュレーション</p>
+<p><img src="http://izumisagiri.github.io/wenya.png" alt="voltage" /></p>
+<p>駆動回路</p>
+<p><img src="http://izumisagiri.github.io/gongfang.png" alt="amplifier" /></p>
+<p>PWM制御プログラム</p>
+<pre><code>void PWM(int a){int i;for(i=0;i&lt;10;i++){if(i&lt;a)OUT=1;else OUT=0;}}
+</code></pre>
+<p>モータの正逆転制御回路「Hブリッジ回路」</p>
+<p><img src="http://izumisagiri.github.io/H.png" alt="H" /></p>
+<pre><code>void tingzhi()                          //モーターを止める
+{
+    H1=1;H2=1;H3=1;H4=1;                    //このHブリッジ回路はLowにしたら導通する
+    jdq_zhuangtai = 'g';
+}
+void zhengzhuan()                       //モーターを回転する
+{
+    H3=1;H4=1;                      //安全のためにまずFETを全部ＯＦＦ状態にする
+    delay();
+    H1=0;H2=0;
+    zhuan_direct = 'z';                 //ここで二つの有限オートマトンを設置する。方向及び状態を記録する。
+    jdq_zhuangtai = 'k';
+}
+void fanzhuan()                         //モーターを逆回転する
+{
+    H1=1;H2=1;
+    delay();
+    H3=0;H4=0;
+    zhuan_direct = 'f';
+    jdq_zhuangtai = 'k';
+}
+</code></pre>
+<h3>カーテンの状態検出</h3>
+<p>FSMを使って、モーターの回転べき方向及びカーテン状態を記録できる。カーテンが完全に開かれたあるいは閉められたとき、光電スイッチはLowからHighにしてFSMも変わる。
+<img src="http://izumisagiri.github.io/FSM.png" alt="FSM" /></p>
+<h3>カーテンの操作パターンの設計</h3>
+<p>開く、閉める、停止、再始動、変調の五つの操作パターンを構想する。これらの操作状態を表すため、以下の五つの変数を設置する。</p>
+<blockquote>
+<p>zhuan_stat 回転状態変数<br />
+zhuan_direct 回転方向状態変数<br />
+zhuan_zhuangtai カーテン状態変数<br />
+jdq_zhuangtai Hブリッジ状態変数<br />
+dangban 光電スイッチ状態変数</p>
+</blockquote>
+<p>光電スイッチはLowにしてながら回転状態変数が20にするとモーターを始動させる。</p>
+<p>各操作パターンの流れは以下の流れ図の通りである。</p>
+<p><img src="http://izumisagiri.github.io/control.png" alt="start" />
+<img src="http://izumisagiri.github.io/control2.png" alt="stop" />
+<img src="http://izumisagiri.github.io/control3.png" alt="pause" /></p>
+<h2>通信プロトコールの設計</h2>
+<p>以下の制御文字を定義する。</p>
+<blockquote>
+<p>AckX：転送開始<br />
+GotX：肯定応答<br />
+OpnX：カーテンを開く<br />
+ClsX：カーテンを閉じる<br />
+SttX：モーターを始動する<br />
+PauX：モーターを停止する<br />
+SpeX：速度変調</p>
+</blockquote>
+<p>通信を補助するためにカウンターも一つ設置する。</p>
+<p>マスター側の送信流れは以下の流れ図の通りである。</p>
+<p><img src="http://izumisagiri.github.io/communication1.png" alt="PC" title="パソコン" /></p>
+<p>スレーブ側の送信流れは以下の流れ図の通りである。</p>
+<p><img src="http://izumisagiri.github.io/communication2.png" alt="MC" title="マイコン" /></p>
+<h2>中央コントロールソフトウェアの開発</h2>
+<p>本設計はPC02F24をマスター側通信モジュールとして採用し、WLK02F24をスレーブ側通信モジュールとする。開発Microsoft Visual Studioを開発環境とする。</p>
+<p>シリアル通信のためのファンクションクラスSerialControlHelper.cs：</p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO.Ports;
+
+namespace 物联网中控软件                       //「IoTコントロールソフトウェア」の意味
+{
+    public class SerialControlHelper
+    {
+        SerialPort sp = null;                       //COMポートをインスタンス化
+
+        public bool SerialPortOpen(string Port)     //COMポートの初期化は成功したかどうかを戻る
+        {
+            sp = new SerialPort();                  //COMポートをインスタンス化
+            sp.PortName = Port;                 //関数によってポートを決める
+            sp.Parity = Parity.None;                //バリティチェックなし
+            sp.StopBits = StopBits.One;             //ストップビットを1ビットにする
+            sp.BaudRate = 9600;                 //ボーレートを9600にする
+            sp.DataBits = 8;                        //データビットを8ビットにする
+            sp.RtsEnable = true;    
+            bool successOrNot = true;
+            try
+            {
+                sp.Open();                          //インスタンス化したポートを開く
+            }
+            catch
+            {
+                successOrNot = false;               //失敗したら「偽」を戻る
+            }
+            return successOrNot;                    //値を戻る
+        }
+        public Byte[] SerialData                    //変数SerialDataを定義する。当変数の値を読むとき
+        {                                       //COMポートからのデータを読み込む
+            Get                                 //読み込む
+            {
+                string dataTemp = sp.ReadTo(&quot;X&quot;);   //制御文字「X」まで読み込む
+                ASCIIEncoding ae = new ASCIIEncoding();//实例化ASCII编码方法
+                Byte[] dataByte = ae.GetBytes(dataTemp); //将单片机传来的ASCII码转化成相应数字
+                return dataByte;                    //返回值
+            }
+            Set                                 //写入过程
+            {
+                Byte[] dataByte = value;            //将待写入值存入临时数组dataByte
+                int dataLength = dataByte.Length;   //获取数组长度
+                sp.Write(dataByte,0,dataLength);        //写入串口
+            }
+        }
+        public bool SetTargetAddress(byte targetAddress) //PC02F24改变通讯地址
+        {
+            this.SerialData = new Byte[] {0x9d, 0x8c, 0x6b, 0x5a, 0xdd, 0x08, 0x01, targetAddress };                                    //命令内容
+            bool successOrNot = false;
+            if (sp.ReadByte() == 0x9d &amp;&amp; sp.ReadByte() == 0x8c &amp;&amp; sp.ReadByte() == 0x6b) successOrNot = true;                               //检测返回值是否为9D 8C 6B
+            return successOrNot;                    //返回值
+        }
+        public void SendMessage(string messageText) //发送命令函数
+        {
+            sp.Write(messageText);
+        }
+        public void SendAck()                       //发送Ack请求函数
+        {
+            sp.Write(&quot;AckX&quot;);
+        }
+        public bool GetAck()                        //接收Got回应函数
+        {
+            bool gotOrNot = false;
+            if (sp.ReadTo(&quot;X&quot;) == &quot;Got&quot;) gotOrNot = true;
+            return gotOrNot;
+        }
+
+
+
     }
 }
 </code></pre>
