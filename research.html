@@ -2,9 +2,11 @@
 <h2>はじめに</h2>
 <p>本論文は、スマートホームシステムのフレームワークの構築への検討である。</p>
 <p>本システムは、ユビキタスセンシングネットワーク、データーベース、中央コントロールシステムとリモコン端末からなっている。このシステムは、居場所の環境要素を検出し情報源として家屋にある家電用品を遠隔操作できるものである。本研究に通して、スマートホームシステムの構築方法を検討しIoTの要素を理解し更に発展することを目的とする。</p>
+<hr />
 <h2>システムデザイン</h2>
 <p>普通には、スマートホームに対して、温度、湿度、照度が基本的な環境要素であって、インテリジェントカーテンも基本的なインテリジェント家電用品である。それらを例に考えて以下のようになる。</p>
 <p><img src="http://izumisagiri.github.io/system.png" alt="system" title="システムデザイン" /></p>
+<hr />
 <h2>ハードウェアとソフトウェアの選定</h2>
 <h3>温度センサー</h3>
 <p>DS18B20を選定する。測定温度範囲は-55℃～+125℃で、精度は±0.5℃であって、1-Wireバス上で通信を行う。電源動作範囲は3.0V～5.5Vである。</p>
@@ -22,6 +24,7 @@
 <p>データーベースを使う必要及びリモコン端末が使える希望があるので、C#+SQLSERVER+ASP.NETを選定する。C#はオブジェクト指向言語であり、SQLSERVER及びASP.NETと繋ぎやすい。</p>
 <h3>サーバーの構築手法</h3>
 <p>パソコンでIISをインストールしてnat123が提供した無料ドメインを取得してサーバーを構築する。</p>
+<hr />
 <h2>温度及び湿度を検出するプログラムの開発</h2>
 <h3>温度を検出するプログラム</h3>
 <p>DS18B20の初期化</p>
@@ -267,6 +270,7 @@ uchar ADC_Read(uchar add0,uchar add1,uchar chl)
     return dat;
 } 
 </code></pre>
+<hr />
 <h2>インテリジェントカーテンの設計</h2>
 <p>モーターでカーテンを動かして、光電スイッチでカーテンの状態を検出する。直流モーターを使って、PWM制御でモーターの速度を変調する。</p>
 <h3>電子回路</h3>
@@ -303,7 +307,7 @@ void fanzhuan()                         //モーターを逆回転する
 }
 </code></pre>
 <h3>カーテンの状態検出</h3>
-<p>FSMを使って、モーターの回転べき方向及びカーテン状態を記録できる。カーテンが完全に開かれたあるいは閉められたとき、光電スイッチはLowからHighにしてFSMも変わる。
+<p>FSMを使って、モーターの回転べき方向及びカーテン状態を記録できる。カーテンが完全に開かれたあるいは閉められたとき、光電スイッチはLowからHighにしてフラグも変わる。
 <img src="http://izumisagiri.github.io/FSM.png" alt="FSM" /></p>
 <h3>カーテンの操作パターンの設計</h3>
 <p>開く、閉める、停止、再始動、変調の五つの操作パターンを構想する。これらの操作状態を表すため、以下の五つの変数を設置する。</p>
@@ -319,6 +323,7 @@ dangban 光電スイッチ状態変数</p>
 <p><img src="http://izumisagiri.github.io/control.png" alt="start" />
 <img src="http://izumisagiri.github.io/control2.png" alt="stop" />
 <img src="http://izumisagiri.github.io/control3.png" alt="pause" /></p>
+<hr />
 <h2>通信プロトコールの設計</h2>
 <p>以下の制御文字を定義する。</p>
 <blockquote>
@@ -335,6 +340,7 @@ SpeX：速度変調</p>
 <p><img src="http://izumisagiri.github.io/communication1.png" alt="PC" title="パソコン" /></p>
 <p>スレーブ側の送信流れは以下の流れ図の通りである。</p>
 <p><img src="http://izumisagiri.github.io/communication2.png" alt="MC" title="マイコン" /></p>
+<hr />
 <h2>中央コントロールソフトウェアの開発</h2>
 <p>本設計はPC02F24をマスター側通信モジュールとして採用し、WLK02F24をスレーブ側通信モジュールとする。開発Microsoft Visual Studioを開発環境とする。</p>
 <p>シリアル通信のためのファンクションクラスSerialControlHelper.cs：</p>
@@ -449,7 +455,7 @@ namespace 物联网中控软件
             bool successOrNot = sc.SetTargetAddress(0x01); //PC02F24のあて先を成功的に設置したか
             toolStripStatusLabel1.Text = &quot;设置地址为01：失败&quot;;//まず「失敗した」を表す
             if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为01：成功&quot;;//成功したら「成功した」に切り替える
-            timer1.Start();                         //タイマーを始動する
+            timer1.Start();                         //タイマーをスタートする
             while (true)                                //バックグラウンドは無限ループに入る
             {
                 if (timerFlag)                          //タイマーフラグは「真」か
@@ -511,10 +517,10 @@ namespace 物联网中控软件
 {
     public partial class Curtain : Form
     {
-        SerialControlHelper sc = null;                  //实例化串口方法类
-        DatabaseHelper dbh = null;                      //实例化数据库方法类
-        bool timerFlag = false;                     //定时器标志位
-        bool kaiQiFlag = false;                     //定义上述控制位
+        SerialControlHelper sc = null;                  //シリアルポートクラスをインスタンス化する
+        DatabaseHelper dbh = null;                      //データベースクラスをインスタンス化する
+        bool timerFlag = false;                     //タイマーフラグ
+        bool kaiQiFlag = false;                     //以上のフラグを定義する
         bool guanBiFlag = false;
         bool zanTingFlag = false;
         bool tiaoSuFlag = false;
@@ -522,46 +528,46 @@ namespace 物联网中控软件
         public Curtain()
         {
             InitializeComponent();
-            sc = new SerialControlHelper();             //实例化串口方法类
-            dbh = new DatabaseHelper();                 //实例化数据库方法类
-            sc.SerialPortOpen(&quot;COM4&quot;);                  //开启串口COM4
-            dbh.OpenDatabase();                     //开启数据库
-            CheckForIllegalCrossThreadCalls = false;        //允许后台线程直接操纵前台控件
-            backgroundWorker1.RunWorkerAsync();         //开启后台线程
+            sc = new SerialControlHelper();             //シリアルポートクラスをインスタンス化する
+            dbh = new DatabaseHelper();                 //データベースクラスをインスタンス化する
+            sc.SerialPortOpen(&quot;COM4&quot;);                  //COM4を開く
+            dbh.OpenDatabase();                     //データベースに接続する
+            CheckForIllegalCrossThreadCalls = false;        //バックグラウンドが直接にフォアグラウンドのウィジェットを操作することを許可する
+            backgroundWorker1.RunWorkerAsync();         //バックグラウンドを作動させる
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            bool successOrNot = sc.SetTargetAddress(0x01); //设置通讯目标地址为相应单片机
+            bool successOrNot = sc.SetTargetAddress(0x02); //通信あて先をセットする
             toolStripStatusLabel1.Text = &quot;设置地址为02：失败&quot;;
-            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为02：成功&quot;;//显示成功信息
-            timer1.Start();                         //启动定时器
+            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为02：成功&quot;;//「成功した」を表す
+            timer1.Start();                         //タイマーをスタートする
             while (true)
             {
-                string commandTemp = dbh.commandValue.Trim();//调用数据库方法，读网页前端控制字
+                string commandTemp = dbh.commandValue.Trim();//データベースを調べてリモコン端末からの制御文字を読み込む
                 if (commandTemp == &quot;k&quot;) kaiQiFlag = true;
                 else if (commandTemp == &quot;g&quot;) guanBiFlag = true;
                 else if (commandTemp == &quot;z&quot;) zanTingFlag = true;
                 else if (commandTemp == &quot;t&quot;) tiaoSuFlag = true;
-                else if (commandTemp == &quot;q&quot;) qiDongFlag = true;//根据网页前端控制字的不同，将相//应命令控制位置为true
-                label4.Text = commandTemp;                  //显示网页前端控制字，方便调试
-                dbh.RenewData(&quot;Curtain&quot;, &quot;Command&quot;, &quot;0&quot;);       //将网页端控制字清零
+                else if (commandTemp == &quot;q&quot;) qiDongFlag = true;//制御文字によってフラグを「真」にする
+                label4.Text = commandTemp;                  //デバッグのための表す
+                dbh.RenewData(&quot;Curtain&quot;, &quot;Command&quot;, &quot;0&quot;);       //リモコン端末からの制御文字をデータベースから削除する
                 if (kaiQiFlag) KaiQi();
                 else if (guanBiFlag) GuanBi();
                 else if (zanTingFlag) ZanTing();
                 else if (tiaoSuFlag) TiaoSu();
-                else if (qiDongFlag) QiDong();              //根据控制位执行相应操作
-                else if (timerFlag)                         //定时器到设定时间
+                else if (qiDongFlag) QiDong();              //フラグによってふさわしいファンクションを行う
+                else if (timerFlag)                         //時間が到着したか
                 {
-                    timerFlag = false;                      //将定时器标志位清回false
-                    Thread.Sleep(1000);                     //延时1秒，等待单片机准备好
-  button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = false;                                   //正式开始执行电机状态询问前，                                              //先禁用所有按钮，防止产生混乱
-                    sc.SendAck();                           //发送Ack
-                    bool gotOrNot = sc.GetAck();                //检测是否收到Got
+                    timerFlag = false;                      //タイマーフラグを「偽」にする
+                    Thread.Sleep(1000);                     //１秒のフリーズが、マイコンを時間を与える所以である
+                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = false;//誤動作防止のため、カーテン状態を求む前にあらゆるボタンを禁止する
+                    sc.SendAck();                           //Ackを送信する
+                    bool gotOrNot = sc.GetAck();                //Gotを受信したか
                     if (gotOrNot) toolStripStatusLabel1.Text += &quot; 握手成功&quot;;
                     else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
-                    Thread.Sleep(1000);                     //延时，等待单片机做好接受准备
-                    sc.SendAck();                           //发送Ack
+                    Thread.Sleep(1000);                     //１秒のフリーズ
+                    sc.SendAck();                           //Ackを送信する
 
                     byte[] dataByte = sc.SerialData;
                     ASCIIEncoding ae = new ASCIIEncoding();
@@ -587,28 +593,28 @@ namespace 物联网中控软件
                         statusLbl.Text = &quot;暂停中&quot;;
                         dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;暂停中&quot;);
                     }
-                    speedLbl.Text = spd;                    //接收并显示单片机传来的状态信息
-                    Thread.Sleep(1000);                     //延时
-                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = true;                                                  //状态询问执行完毕，恢复按钮功能
+                    speedLbl.Text = spd;                    //マイコンからの情報を読み込み、提示する
+                    Thread.Sleep(1000);                     //１秒のフリーズ
+                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = true;  //状態求め完了し、ボタン禁止解除
                 }
             }
         }
 
-        private void KaiQi()                                //开启功能
+        private void KaiQi()                                //カーテンを開くファンクション
         {
-            kaiQiFlag = false;                              //开启标志位清回false
-            sc.SendAck();                                   //发送Ack
-            bool gotOrNot = sc.GetAck();                    //检测是否收到Got
+            kaiQiFlag = false;                              //カーテンを開くフラグを「偽」に戻す
+            sc.SendAck();                                   //Ackを送信する
+            bool gotOrNot = sc.GetAck();                    //Gotを受信したか
             if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
             else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
-            Thread.Sleep(1000);                         //延时，等待单片机做好准备
-            sc.SendMessage(&quot;OpnX&quot;);                         //发送Opn
-            bool gotOrNot2 = sc.GetAck();                   //检测是否收到Got
+            Thread.Sleep(1000);                         //１秒のフリーズ
+            sc.SendMessage(&quot;OpnX&quot;);                         //Opnを送信する
+            bool gotOrNot2 = sc.GetAck();                   //Gotを受信したか
             if (!gotOrNot2) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
             else toolStripStatusLabel1.Text += &quot; 开启成功&quot;;
         }
 
-        private void GuanBi()                               //关闭功能同上
+        private void GuanBi()                               //カーテンを閉じるファンクション
         {
             guanBiFlag = false;
             backgroundWorker1.CancelAsync();
@@ -623,7 +629,7 @@ namespace 物联网中控软件
             else toolStripStatusLabel1.Text += &quot; 关闭成功&quot;;
         }
 
-        private void ZanTing()                              //暂停功能同上
+        private void ZanTing()                              //カーテンを停止するファンクション
         {
             zanTingFlag = false;
             backgroundWorker1.CancelAsync();
@@ -633,7 +639,7 @@ namespace 物联网中控软件
             else toolStripStatusLabel1.Text = &quot; 暂停成功&quot;;
         }
 
-        private void TiaoSu()                               //调速功能同上
+        private void TiaoSu()                               //速度変調のファンクション
         {
             tiaoSuFlag = false;
             backgroundWorker1.CancelAsync();
@@ -648,7 +654,7 @@ namespace 物联网中控软件
             else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
         }
 
-        private void QiDong()                               //启动功能同上
+        private void QiDong()                               //再始動のファンクション
         {
             qiDongFlag = false;
             backgroundWorker1.CancelAsync();
@@ -658,7 +664,7 @@ namespace 物联网中控软件
             else toolStripStatusLabel1.Text = &quot; 启动成功&quot;;
         }
 
-        private void button1_Click(object sender, EventArgs e) //单击按钮则开启标志位置true
+        private void button1_Click(object sender, EventArgs e) //ボタンを押したら対応するフラグを「真」にする
         {
             kaiQiFlag = true;
         }
@@ -683,10 +689,631 @@ namespace 物联网中控软件
             tiaoSuFlag = true;
         }
 
-        private void timer1_Tick(object sender, EventArgs e) //定时器到期则置定时器标志位为true
+        private void timer1_Tick(object sender, EventArgs e) //時間が来たらフラグを「真」にする
         {
             timerFlag = true;
         }
+    }
+}
+</code></pre>
+<hr />
+<h2>データベースの設計</h2>
+<p>本設計にとっては、簡単なデータベースが十分である。環境要素はただ温度、湿度と照度の三つであり、カーテンの要素はただ状態とコマンドの二つである。
+データベースは以下のようになる。</p>
+<p><img src="http://izumisagiri.github.io/status.png" alt="status" title="Status" /></p>
+<p><img src="http://izumisagiri.github.io/curtain.png" alt="curtain" title="Curtain" /></p>
+<hr />
+<h2>データベースへの読み書きファンクションの開発</h2>
+<p>3階層システムを使わなかった。プレゼンテーション層とアプリケーション層を一層にし、データ層を一層にする。
+データベースファンクションのためのクラスDatabaseHelper.csは以下のようになる。</p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO.Ports;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace 物联网中控软件
+{
+    class DatabaseHelper
+    {
+        static string connectionString = &quot;Data Source=localhost;Initial Catalog=SmartHomeDatabase;Integrated Security=True&quot;;//ローカルデータベースSmartHomeDatabaseに接続する
+        SqlConnection sc = new SqlConnection(connectionString); //接続をインスタンス化する
+        public void OpenDatabase()                  //データベースを開放する
+        {
+            sc.Open();
+        }
+        public void RenewData(string dataSet, string dataColumn, string zhi) //データを更新するファンクション
+        {
+            SqlCommand sqlCmd = new SqlCommand(&quot;Update &quot; + dataSet + &quot; set &quot; + dataColumn + &quot; = '&quot; + zhi + &quot;'&quot;, sc);    //Sqlコマンドをインスタンス化する
+            sqlCmd.ExecuteNonQuery();               //Sqlコマンドを実行して更新操作が完了する
+        }
+        private string GetData(string dataSet, string dataColumn) //データを読み込みファンクション
+        {
+            SqlCommand scm = new SqlCommand(&quot;select &quot; + dataColumn + &quot; from &quot; + dataSet, sc);
+            return scm.ExecuteScalar().ToString();  //Sqlコマンドをインスタンス化して実行し、結果を戻す
+        }
+    public string commandValue
+        {
+            get
+            {
+                return GetData(&quot;Curtain&quot;, &quot;Command&quot;);
+            }
+        }
+    }
+}
+</code></pre>
+<hr />
+<h2>ウェブアプリケーションの開発</h2>
+<p>3階層システムを使う。LinqDataSourceでアプリケーション層を構築し、DetailsViewでプレゼンテーション層を構築する。
+<img src="http://izumisagiri.github.io/link.png" alt="" /></p>
+<p>環境要素を提示するGUIは以下のようになる。</p>
+<p><img src="http://izumisagiri.github.io/environment.png" alt="" /></p>
+<p>LinqDataSourceに指定されたデータソースにFormViewの三つのLabelのText属性をバインドする。</p>
+<p><img src="http://izumisagiri.github.io/linqdatasource.png" alt="" /></p>
+<p>カーテン監視制御GUIは以下のようになる。</p>
+<p><img src="http://izumisagiri.github.io/widget.png" alt="" /></p>
+<p>データソースにカーテンを開く、閉じる、停止、再始動及び速度変調のコマンドを挿入する。</p>
+<p><img src="http://izumisagiri.github.io/command.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/linqdatasource2.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/linqdatasourceset.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/linqdatasourcedatasource.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/dropdownlist.png" alt="" /></p>
+<p>最後はリリースする。</p>
+<p><img src="http://izumisagiri.github.io/release.png" alt="" /></p>
+<hr />
+<h2>インターネットでリリースする</h2>
+<p>nat123が提供した無料ドメインを使ってサーバーを構築する。</p>
+<p><img src="http://izumisagiri.github.io/internet.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet2.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet3.png" alt="" /></p>
+<p>インターネットで監視制御が可能になる。</p>
+<p><img src="http://izumisagiri.github.io/internet4.png" alt="" /></p>
+<p>スマホのスクリーンショット</p>
+<p><img src="http://izumisagiri.github.io/internet5.png" alt="" />
+<img src="http://izumisagiri.github.io/internet6.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet7.png" alt="" />
+<img src="http://izumisagiri.github.io/internet8.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet9.png" alt="" /></p>
+<hr />
+<h1>付録</h1>
+<h3>A 環境監視システムのプログラム</h3>
+<pre><code>#include&lt;reg52.h&gt;
+#include&lt;intrins.h&gt;
+#include&lt;math.h&gt;
+
+#define uchar unsigned char
+#define uint unsigned int 
+#define Write_PCF8591 0x90
+#define Read_PCF8591 0x91
+#define Control_Byte 0x40
+/////////ADDA Define Part///////////
+sbit SCL=P3^5;
+sbit SDA=P3^4;
+/////////Send Define Part/////////
+sbit SETA = P0^1;
+sbit SETB = P0^2;
+//char testshuzi = 1;
+int i;
+int jishu;
+//int P1xianshi;
+char dataGot[10] = {0,0,0,0,0,0,0,0,0,0};
+int dataGotCount;
+//bit sendflag;
+///////Temperature Define Part////////
+sbit DS_Data = P2^0;
+unsigned char d1, d2, d3;
+///////////////////Light Define Part/////////////
+sbit light = P0^3;
+uchar lightASCII;
+//////////////////////ADDA Part/////////////////////
+uchar bai,shi,ge;
+
+void delayADDAms(uint z)
+{
+    uint x,y;
+    for(x=0;x&lt;z;x++)
+        for(y=0;y&lt;110;y++);
+}
+
+void delayADDA()
+{
+    _nop_();_nop_();
+    _nop_();_nop_();
+    _nop_();_nop_();
+    _nop_();_nop_();
+}
+
+void init_IIC()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+}
+
+void start()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SDA=0;
+    delayADDA();
+}
+
+void stop()
+{
+    SDA=0;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SDA=1;
+    delayADDA();
+}
+
+void ack()
+{
+    uchar i=0;
+    SCL=1;
+    delayADDA();
+    while((SDA==1)&amp;&amp;(i&lt;250)) i++;
+    SCL=0;
+    delayADDA();
+}
+
+void noack()
+{
+    SDA=1;
+    delayADDA();
+    SCL=1;
+    delayADDA();
+    SCL=0;
+    delayADDA();
+}
+
+void Write_Byte(uchar dat)
+{
+    uchar i;
+    for(i=0;i&lt;8;i++)
+    {
+        SCL=0;
+        delayADDA();
+        if(dat&amp;0x80)
+        {
+            SDA=1;
+        }
+        else
+        {
+            SDA=0;
+        }
+        dat=dat&lt;&lt;1;
+        SCL=1;
+        delayADDA();
+    }
+    SCL=0;
+    delayADDA();
+    SDA=1;
+    delayADDA();    
+}
+
+uchar Read_Byte()
+{
+    uchar i,dat;
+    SCL=0;
+    delayADDA();
+    SDA=1;
+    delayADDA();
+    for(i=0;i&lt;8;i++)
+    {
+        SCL=1;
+        delayADDA();
+        dat=dat&lt;&lt;1;
+        if(SDA)
+        {
+            dat++;
+        }
+        SCL=0;
+        delayADDA();
+    }
+    return dat;
+}
+
+void DAC_PCF8591(uchar add,uchar dat)
+{
+    start();
+    Write_Byte(add);
+    ack();
+    Write_Byte(Control_Byte);
+    ack();
+    Write_Byte(dat);
+    ack();
+    stop();
+}
+
+uchar ADC_Read(uchar add0,uchar add1,uchar chl)
+{
+    uchar dat;
+    start();
+    Write_Byte(add0);
+    ack();
+    Write_Byte(Control_Byte|chl);
+    ack();
+    start();
+    Write_Byte(add1);
+    ack();
+    dat=Read_Byte();
+    noack();
+    stop();
+    return dat;
+}
+ ////////////////////////////Send Part///////////////////
+void mode0()
+{
+    SETA=0;SETB=0;
+}
+void delay()
+{    int i,j;
+    for(i = 0;i &lt; 100;i++)for(j = 0;j &lt; 100;j++);
+    }
+    void send(unsigned char aha)
+{
+      EA=0;
+      SBUF = aha;
+      while(!TI);
+      TI = 0;
+      EA=1;
+}
+//////////////////////Communicate Part//////////////////////
+void getByte() interrupt 4 using 3
+{
+    char a;
+    EA=0;
+    a = SBUF;
+    dataGot[dataGotCount] = a;
+    dataGotCount++;
+    if(a == 'X')
+    {
+        dataGotCount = 0;
+        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 0))
+        {
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
+        }
+        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 1))
+        {
+        delay();delay();delay();delay();delay();delay();delay();
+        send(d1);delay();delay();delay();send(d2);delay();delay();delay();send(d3);delay;delay();delay();
+        send(bai);delay(); delay();delay();send(shi);delay();delay();delay();send(ge);delay();delay();delay();
+        send(lightASCII);delay;delay();delay();
+        send('1');delay();delay();delay();send('1');delay;delay();delay();send('1');delay(); delay();delay();
+        send('X');delay();
+        jishu--;
+        }
+    }
+    EA=1;RI=0;
+}
+
+/////////////////////////Temperature Part///////////////////
+void delayDSMs(unsigned int i)  //??????,?????11.0592M???????????1ms
+{
+    unsigned int j,k;
+
+    for(j=i; j&gt;0; j--)
+        for(k=114; k&gt;0; k--);
+}
+void DS18B20_Reset(void)
+{
+    unsigned int i;
+
+    DS_Data = 0;
+    i = 103;
+    while(i&gt;0)  i--;
+
+    DS_Data = 1;
+    i = 4;
+    while(i&gt;0)  i--;
+}
+bit DS18B20_ReadBit(void)   
+{
+    unsigned int i;
+    bit dat;
+
+    DS_Data = 0;
+    i++;
+    DS_Data = 1;
+    i++;
+    i++;
+    dat = DS_Data;
+
+    i = 8;
+    while(i&gt;0)  i--;
+
+    return (dat);
+}
+uchar DS18B20_ReadByte(void)    
+{
+    unsigned char i,j,dat;
+    
+    dat=0;
+    for(i=1; i&lt;=8; i++)
+    {
+        j = DS18B20_ReadBit();
+        dat=(j&lt;&lt;7)|(dat&gt;&gt;1); 
+    }
+
+    return(dat);
+}
+void DS18B20_WriteByte(unsigned char dat)   
+{
+    unsigned int i;
+    unsigned char j, k;
+    bit b;
+
+    k = dat;
+
+    for(j=1; j&lt;=8; j++)
+    {
+        b = k &amp; 0x01;
+        k = k &gt;&gt; 1;
+        if(b)                   //write 1
+        {
+            DS_Data = 0;
+            i++; i++;
+            DS_Data = 1;
+            i = 8;
+            while(i&gt;0) i--;
+        }
+        else
+        {
+            DS_Data = 0;            //write 0
+            i = 8;
+            while(i&gt;0)  i--;
+            DS_Data = 1;
+            i++; i++;
+        }
+    
+    }
+}
+void DS18B20_Change(void)   
+{
+    DS18B20_Reset();
+    delayDSMs(5);
+    DS18B20_WriteByte(0xcc);     // address all drivers on bus
+    DS18B20_WriteByte(0x44);    //  initiates a single temperature conversion  
+}
+int DS18B20_GetTemp()           //get the temperature
+{
+    float t;
+    unsigned char a, b;
+    int temp;
+    
+    DS18B20_Reset();
+    delayDSMs(5);
+    DS18B20_WriteByte(0xcc);
+    DS18B20_WriteByte(0xbe);
+    a=DS18B20_ReadByte();
+    b=DS18B20_ReadByte();
+    
+    temp = b;
+    temp &lt;&lt;= 8;                     //two byte  compose a int variable
+    temp = temp|a;
+    t = temp*0.0625;
+    temp = t*10+0.5;
+    
+    return temp;
+}
+
+void main()
+{
+    int tempDS,tempAD,lighttemp;
+    i = 0;
+    jishu = 0;
+    dataGotCount = 0;
+    SCON = 0x58;
+    EA=1;
+    ET0=1;
+    ET1=0;
+    ES=1;
+    PS=1;
+    TMOD=0x21;
+    TL0=0x00;
+    TH0=0x4C;
+    TL1=0xFD;
+    TH1=0xFD;
+    TR0=0;
+    TR1=1;
+    mode0();
+    init_IIC();
+    while(1)
+    {
+    ////////////AD Run Part////
+        tempAD=ADC_Read(Write_PCF8591,Read_PCF8591,0);
+        P1=tempAD;
+        bai=(tempAD*196/300/100)%10 + 0x30;
+        shi=(tempAD*196/300/10)%10 + 0x30;
+        ge=(tempAD*196/300)%10 + 0x30;     
+        /////Temperature Run Part/////////
+        DS18B20_Change();
+        tempDS = DS18B20_GetTemp();
+        d1 = tempDS/100 + 0x30;
+        d2 = (tempDS % 100) / 10 + 0x30;
+        d3 = tempDS % 10 + 0x30;    
+        //////Light Run Part/////////
+        lighttemp=light;
+        lightASCII = lighttemp + 0x30;
+    }
+}
+</code></pre>
+<h3>B カーテン監視制御プログラム</h3>
+<pre><code>#include&lt;reg52.h&gt;
+///////////Test Define Part//////////
+/////////Send Define Part///////////
+sbit SETA = P0^1;
+sbit SETB = P0^2;
+char testshuzi = 1;
+int i;
+int jishu;
+char dataGot[10] = {0,0,0,0,0,0,0,0,0,0};
+int dataGotCount;
+/////////Curtain Define Part///////////////     `
+int zhuan_stat;
+char zhuan_direct,zhuan_zhuangtai,jdq_zhuangtai;
+int PWMzhi;
+sbit OUT=P0^0;                              
+sbit H1=P0^3;
+sbit H2=P0^4;
+sbit H3=P0^5;
+sbit H4=P0^6;
+sbit dangban=P0^7;
+
+void zhengzhuan();
+void fanzhuan();
+void tingzhi();
+void PWM(int a){int i;for(i=0;i&lt;10;i++){if(i&lt;a)OUT=1;else OUT=0;}}
+
+/////////Send Part/////////////////////
+void mode0()
+{
+    SETA=0;SETB=0;
+}
+void delay()
+{    int i,j;
+    for(i = 0;i &lt; 100;i++)for(j = 0;j &lt; 100;j++);
+    }
+    void send(unsigned char aha)
+{
+      EA=0;
+      SBUF = aha;
+      while(!TI);
+      TI = 0;
+      EA=1;
+}
+void getByte() interrupt 4 using 3
+{
+    char a;int PWMCOUNT;
+    EA=0;OUT=0;
+    a = SBUF;
+    dataGot[dataGotCount] = a;
+    dataGotCount++;
+    if(a == 'X')
+    {
+        dataGotCount = 0;
+        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 0))
+        {
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
+        }
+        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 1))
+        {
+        delay();delay();delay();delay();delay();delay();delay();
+        send(zhuan_zhuangtai);delay();delay();delay();send(PWMzhi + 0x30);delay(); delay();delay();send('X');delay(); jishu--;
+        }
+                if((dataGot[0] == 'O') &amp;&amp; (dataGot[1] == 'p') &amp;&amp; (dataGot[2] == 'n') &amp;&amp; (jishu == 1))
+        {
+        zhuan_stat = 20;zhengzhuan();
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        for(PWMCOUNT = 0;PWMCOUNT &lt; 20;PWMCOUNT++)PWM(PWMzhi);
+        }
+                        if((dataGot[0] == 'C') &amp;&amp; (dataGot[1] == 'l') &amp;&amp; (dataGot[2] == 's') &amp;&amp; (jishu == 1))
+        {
+        zhuan_stat = 20;fanzhuan();
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        for(PWMCOUNT = 0;PWMCOUNT &lt; 20;PWMCOUNT++)PWM(PWMzhi);
+        }
+                                if((dataGot[0] == 'S') &amp;&amp; (dataGot[1] == 't') &amp;&amp; (dataGot[2] == 't') &amp;&amp; (jishu == 0))
+        {
+        zhuan_stat = 20;
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;
+        }
+                        if((dataGot[0] == 'P') &amp;&amp; (dataGot[1] == 'a') &amp;&amp; (dataGot[2] == 'u') &amp;&amp; (jishu == 0))
+        {
+        zhuan_stat = 0;tingzhi();
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;
+        }
+                        if((dataGot[0] == 'S') &amp;&amp; (dataGot[1] == 'p') &amp;&amp; (dataGot[2] == 'e') &amp;&amp; (jishu == 1))
+        {
+                PWMzhi = (int)dataGot[3] - 0x30;
+        delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
+        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        }
+    }
+    EA=1;RI=0;
+}
+////////////////////Curtain Part/////////
+void tingzhi()
+{
+    H1=1;H2=1;H3=1;H4=1;
+    jdq_zhuangtai = 'g';
+}
+void zhengzhuan()
+{
+    H3=1;H4=1;
+    delay();
+    H1=0;H2=0;
+    zhuan_direct = 'z';
+    jdq_zhuangtai = 'k';
+}
+void fanzhuan()
+{
+    H1=1;H2=1;
+    delay();
+    H3=0;H4=0;
+    zhuan_direct = 'f';
+    jdq_zhuangtai = 'k';
+}
+
+
+void main()
+{
+    int PWMCOUNT = 0;
+///////////////////Send Part/////////
+    i = 0;
+    jishu = 0;
+    dataGotCount = 0;
+    SCON = 0x58;
+    EA=1;
+    ET0=1;
+    ET1=0;
+    ES=1;
+    PS=1;
+    TMOD=0x21;
+    TL0=0x00;
+    TH0=0x4C;
+    TL1=0xFD;
+    TH1=0xFD;
+    TR0=0;
+    TR1=1;
+    mode0();
+    ////////////Curtain Part/////////
+    H1=1;H2=1;H3=1;H4=1;
+    OUT=0;
+    PWMzhi=9;
+    zhuan_stat=0;
+    zhuan_zhuangtai = 'w';
+    zhengzhuan();
+    zhuan_stat = 20;
+    while(1)
+    {
+        if((zhuan_stat == 20) &amp;&amp; (dangban == 0))P2 = 0;else P2 = 0xff;
+        if((zhuan_stat == 20) &amp;&amp; (dangban == 0))
+        {
+            if(jdq_zhuangtai == 'g')
+            {
+                if(zhuan_direct == 'z')zhengzhuan();
+                else if(zhuan_direct == 'f')fanzhuan();
+            }
+            PWM(PWMzhi);
+            zhuan_zhuangtai = 'y';
+        }
+        else if((zhuan_direct == 'z') &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = 'k';}
+        else if((zhuan_direct == 'f') &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = 'g';}
+        else {OUT=0;tingzhi();zhuan_zhuangtai = 't';}
     }
 }
 </code></pre>
