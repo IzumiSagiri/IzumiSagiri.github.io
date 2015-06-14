@@ -368,48 +368,325 @@ namespace 物联网中控软件                       //「IoTコントロール
             {
                 successOrNot = false;               //失敗したら「偽」を戻る
             }
-            return successOrNot;                    //値を戻る
+            return successOrNot;                    //戻り値
         }
         public Byte[] SerialData                    //変数SerialDataを定義する。当変数の値を読むとき
         {                                       //COMポートからのデータを読み込む
             Get                                 //読み込む
             {
                 string dataTemp = sp.ReadTo(&quot;X&quot;);   //制御文字「X」まで読み込む
-                ASCIIEncoding ae = new ASCIIEncoding();//实例化ASCII编码方法
-                Byte[] dataByte = ae.GetBytes(dataTemp); //将单片机传来的ASCII码转化成相应数字
-                return dataByte;                    //返回值
+                ASCIIEncoding ae = new ASCIIEncoding();//ASCIIEncodingをインスタンス化する
+                Byte[] dataByte = ae.GetBytes(dataTemp); //マイコンからのASCIIコードを数値にコンバートする
+                return dataByte;                    //戻り値
             }
-            Set                                 //写入过程
+            Set                                 //書き込む
             {
-                Byte[] dataByte = value;            //将待写入值存入临时数组dataByte
-                int dataLength = dataByte.Length;   //获取数组长度
-                sp.Write(dataByte,0,dataLength);        //写入串口
+                Byte[] dataByte = value;            //送信すべきデータを配列dataByteに書き込む
+                int dataLength = dataByte.Length;   //配列のサイズを調べる
+                sp.Write(dataByte,0,dataLength);        //シリアルポートに書き込む
             }
         }
-        public bool SetTargetAddress(byte targetAddress) //PC02F24改变通讯地址
+        public bool SetTargetAddress(byte targetAddress) //PC02F24のあて先を切り替える
         {
-            this.SerialData = new Byte[] {0x9d, 0x8c, 0x6b, 0x5a, 0xdd, 0x08, 0x01, targetAddress };                                    //命令内容
+            this.SerialData = new Byte[] {0x9d, 0x8c, 0x6b, 0x5a, 0xdd, 0x08, 0x01, targetAddress };    //コマンド
             bool successOrNot = false;
-            if (sp.ReadByte() == 0x9d &amp;&amp; sp.ReadByte() == 0x8c &amp;&amp; sp.ReadByte() == 0x6b) successOrNot = true;                               //检测返回值是否为9D 8C 6B
-            return successOrNot;                    //返回值
+            if (sp.ReadByte() == 0x9d &amp;&amp; sp.ReadByte() == 0x8c &amp;&amp; sp.ReadByte() == 0x6b) successOrNot = true;   //戻り値は「9D 8C 6B」か
+            return successOrNot;                    //戻り値
         }
-        public void SendMessage(string messageText) //发送命令函数
+        public void SendMessage(string messageText) //送信コマンド
         {
             sp.Write(messageText);
         }
-        public void SendAck()                       //发送Ack请求函数
+        public void SendAck()                       //Ackを送信する
         {
             sp.Write(&quot;AckX&quot;);
         }
-        public bool GetAck()                        //接收Got回应函数
+        public bool GetAck()                        //Gotを受信する
         {
             bool gotOrNot = false;
             if (sp.ReadTo(&quot;X&quot;) == &quot;Got&quot;) gotOrNot = true;
             return gotOrNot;
         }
+    }
+}
+</code></pre>
+<p>以上のクラスはポートの開き、ポートを通じての読み書き、通信あて先の切り替え、Ackの送信とAckの受信のファンクションを実現した。</p>
+<h3>情報提示モジュール</h3>
+<p>環境要素を提示するGUIは以下のようになる。温度、湿度、照度を提示する。</p>
+<p><img src="http://izumisagiri.github.io/GUI.png" alt="environment" title="GUI" /></p>
+<p>プログラムは以下のようになる。</p>
+<pre><code>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Threading;                             //Threadingはディレーのクラス
 
+namespace 物联网中控软件
+{
+    public partial class Status : Form
+    {
+        SerialControlHelper sc = null;                  //前にプログラミングしたクラスをインスタンス化する
+        DatabaseHelper dbh = null;                      //データベースクラスをインスタンス化する
+        bool timerFlag = false;                     //タイマーフラグ
+        public Status()                             //モジュール名
+        {
+            InitializeComponent();
+            sc = new SerialControlHelper();             //クラスをインスタンス化する
+            dbh = new DatabaseHelper();                 //データベースクラスをインスタンス化する
+            sc.SerialPortOpen(&quot;COM4&quot;);                  //COM4を開く
+            dbh.OpenDatabase();                     //データベースに接続する
+            CheckForIllegalCrossThreadCalls = false;        //バックグラウンドが直接にフォアグラウンドのウィジェットを操作することを許可する
+            backgroundWorker1.RunWorkerAsync();         //バックグラウンドを作動させる
+        }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) //バックグラウンド
+        {
+            bool successOrNot = sc.SetTargetAddress(0x01); //PC02F24のあて先を成功的に設置したか
+            toolStripStatusLabel1.Text = &quot;设置地址为01：失败&quot;;//まず「失敗した」を表す
+            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为01：成功&quot;;//成功したら「成功した」に切り替える
+            timer1.Start();                         //タイマーを始動する
+            while (true)                                //バックグラウンドは無限ループに入る
+            {
+                if (timerFlag)                          //タイマーフラグは「真」か
+                {
+                    tickLbl.Text += &quot;ha&quot;;               //デバッグのための表示
+                    timerFlag = false;                  //タイマーフラグを「偽」にする
+                    sc.SendAck();                       //Ackを送信する
+                    bool gotOrNot = sc.GetAck();            //Gotを受信したか
+                    if (gotOrNot)                       //受信したら「握手成功」、受信しなかったら「握手失敗」を表す
+                        toolStripStatusLabel1.Text += &quot; 握手成功&quot;;
+                    else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
+                    Thread.Sleep(1000);                 //１秒のフリーズが、マイコンを時間を与える所以である
+                    sc.SendAck();                       //Ackを送信する
+                    Byte[] dataByte = sc.SerialData;        //受信したデータを配列dataByteに書き込む
+                    ASCIIEncoding ae = new ASCIIEncoding(); //ASCIIEncodingをインスタンス化する
+                    string tempLblText = ae.GetString(dataByte, 0, 2) + '.' + ae.GetString(dataByte, 2, 1); //マイコンからのデータを「XX.X」のフォーマットにして導入
+                    tempLbl.Text = tempLblText;         //温度値を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Temp&quot;, tempLblText);//温度値をデータベースに書き込む
+                    string humLblText = ae.GetString(dataByte, 4, 2) + '%'; //次のデータを「XX%」のフォーマットにして導入
+                    humLbl.Text = humLblText;           //湿度を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Hum&quot;, humLblText);//湿度をデータベースに書き込む
+                    string lightLblText = ae.GetString(dataByte, 6, 1); //照度を読み込む
+                    lightLbl.Text = lightLblText;       //照度を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Light&quot;, lightLblText);//照度をデータベースに書き込む
+                }
+            }
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timerFlag = true;
+        }
+    }
+}
+</code></pre>
+<h3>カーテンのコントロールモジュール</h3>
+<p>カーテンをコントロールするGUIは以下のようになる。状態、速度、カーテンの開き、閉じ、停止、再始動と速度変調が可能になる。</p>
+<p><img src="http://izumisagiri.github.io/GUI2.png" alt="control" title="GUI" /></p>
+<p>以下の変数を設置した。</p>
+<blockquote>
+<p>kaiQiFlag：カーテンを開くフラグ<br />
+guanBiFlag：カーテンを閉じるフラグ<br />
+zanTingFlag：カーテンを停止するフラグ<br />
+tiaoSuFlag：速度変調のフラグ<br />
+qiDongFlag：再始動のフラグ</p>
+</blockquote>
+<p>プログラムの一部は以下のようになる。</p>
+<pre><code>using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Threading;
+
+namespace 物联网中控软件
+{
+    public partial class Curtain : Form
+    {
+        SerialControlHelper sc = null;                  //实例化串口方法类
+        DatabaseHelper dbh = null;                      //实例化数据库方法类
+        bool timerFlag = false;                     //定时器标志位
+        bool kaiQiFlag = false;                     //定义上述控制位
+        bool guanBiFlag = false;
+        bool zanTingFlag = false;
+        bool tiaoSuFlag = false;
+        bool qiDongFlag = false;
+        public Curtain()
+        {
+            InitializeComponent();
+            sc = new SerialControlHelper();             //实例化串口方法类
+            dbh = new DatabaseHelper();                 //实例化数据库方法类
+            sc.SerialPortOpen(&quot;COM4&quot;);                  //开启串口COM4
+            dbh.OpenDatabase();                     //开启数据库
+            CheckForIllegalCrossThreadCalls = false;        //允许后台线程直接操纵前台控件
+            backgroundWorker1.RunWorkerAsync();         //开启后台线程
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bool successOrNot = sc.SetTargetAddress(0x01); //设置通讯目标地址为相应单片机
+            toolStripStatusLabel1.Text = &quot;设置地址为02：失败&quot;;
+            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为02：成功&quot;;//显示成功信息
+            timer1.Start();                         //启动定时器
+            while (true)
+            {
+                string commandTemp = dbh.commandValue.Trim();//调用数据库方法，读网页前端控制字
+                if (commandTemp == &quot;k&quot;) kaiQiFlag = true;
+                else if (commandTemp == &quot;g&quot;) guanBiFlag = true;
+                else if (commandTemp == &quot;z&quot;) zanTingFlag = true;
+                else if (commandTemp == &quot;t&quot;) tiaoSuFlag = true;
+                else if (commandTemp == &quot;q&quot;) qiDongFlag = true;//根据网页前端控制字的不同，将相//应命令控制位置为true
+                label4.Text = commandTemp;                  //显示网页前端控制字，方便调试
+                dbh.RenewData(&quot;Curtain&quot;, &quot;Command&quot;, &quot;0&quot;);       //将网页端控制字清零
+                if (kaiQiFlag) KaiQi();
+                else if (guanBiFlag) GuanBi();
+                else if (zanTingFlag) ZanTing();
+                else if (tiaoSuFlag) TiaoSu();
+                else if (qiDongFlag) QiDong();              //根据控制位执行相应操作
+                else if (timerFlag)                         //定时器到设定时间
+                {
+                    timerFlag = false;                      //将定时器标志位清回false
+                    Thread.Sleep(1000);                     //延时1秒，等待单片机准备好
+  button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = false;                                   //正式开始执行电机状态询问前，                                              //先禁用所有按钮，防止产生混乱
+                    sc.SendAck();                           //发送Ack
+                    bool gotOrNot = sc.GetAck();                //检测是否收到Got
+                    if (gotOrNot) toolStripStatusLabel1.Text += &quot; 握手成功&quot;;
+                    else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
+                    Thread.Sleep(1000);                     //延时，等待单片机做好接受准备
+                    sc.SendAck();                           //发送Ack
+
+                    byte[] dataByte = sc.SerialData;
+                    ASCIIEncoding ae = new ASCIIEncoding();
+                    string stts = ae.GetString(dataByte, 0, 1);
+                    string spd = ae.GetString(dataByte, 1, 1);
+                    if (stts == &quot;k&quot;)
+                    {
+                        statusLbl.Text = &quot;开启&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;开启&quot;);
+                    }
+                    else if (stts == &quot;g&quot;)
+                    {
+                        statusLbl.Text = &quot;关闭&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;关闭&quot;);
+                    }
+                    else if (stts == &quot;y&quot;)
+                    {
+                        statusLbl.Text = &quot;运行中&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;运行中&quot;);
+                    }
+                    else if (stts == &quot;t&quot;)
+                    {
+                        statusLbl.Text = &quot;暂停中&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;暂停中&quot;);
+                    }
+                    speedLbl.Text = spd;                    //接收并显示单片机传来的状态信息
+                    Thread.Sleep(1000);                     //延时
+                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = true;                                                  //状态询问执行完毕，恢复按钮功能
+                }
+            }
+        }
+
+        private void KaiQi()                                //开启功能
+        {
+            kaiQiFlag = false;                              //开启标志位清回false
+            sc.SendAck();                                   //发送Ack
+            bool gotOrNot = sc.GetAck();                    //检测是否收到Got
+            if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
+            Thread.Sleep(1000);                         //延时，等待单片机做好准备
+            sc.SendMessage(&quot;OpnX&quot;);                         //发送Opn
+            bool gotOrNot2 = sc.GetAck();                   //检测是否收到Got
+            if (!gotOrNot2) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
+            else toolStripStatusLabel1.Text += &quot; 开启成功&quot;;
+        }
+
+        private void GuanBi()                               //关闭功能同上
+        {
+            guanBiFlag = false;
+            backgroundWorker1.CancelAsync();
+            sc.SendAck();
+            bool gotOrNot = sc.GetAck();
+            if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
+            Thread.Sleep(1000);
+            sc.SendMessage(&quot;ClsX&quot;);
+            gotOrNot = sc.GetAck();
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
+            else toolStripStatusLabel1.Text += &quot; 关闭成功&quot;;
+        }
+
+        private void ZanTing()                              //暂停功能同上
+        {
+            zanTingFlag = false;
+            backgroundWorker1.CancelAsync();
+            sc.SendMessage(&quot;PauX&quot;);
+            bool gotOrNot = sc.GetAck();
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
+            else toolStripStatusLabel1.Text = &quot; 暂停成功&quot;;
+        }
+
+        private void TiaoSu()                               //调速功能同上
+        {
+            tiaoSuFlag = false;
+            backgroundWorker1.CancelAsync();
+            sc.SendAck();
+            bool gotOrNot = sc.GetAck();
+            if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
+            Thread.Sleep(1000);
+            sc.SendMessage(&quot;Spe&quot; + numericUpDown1.Value.ToString() + &quot;X&quot;);
+            gotOrNot = sc.GetAck();
+            if (gotOrNot) toolStripStatusLabel1.Text += &quot; 设置速度成功&quot;;
+            else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
+        }
+
+        private void QiDong()                               //启动功能同上
+        {
+            qiDongFlag = false;
+            backgroundWorker1.CancelAsync();
+            sc.SendMessage(&quot;SttX&quot;);
+            bool gotOrNot = sc.GetAck();
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
+            else toolStripStatusLabel1.Text = &quot; 启动成功&quot;;
+        }
+
+        private void button1_Click(object sender, EventArgs e) //单击按钮则开启标志位置true
+        {
+            kaiQiFlag = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            guanBiFlag = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            zanTingFlag = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            qiDongFlag = true;
+        }
+
+        private void speedBtn_Click(object sender, EventArgs e)
+        {
+            tiaoSuFlag = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) //定时器到期则置定时器标志位为true
+        {
+            timerFlag = true;
+        }
     }
 }
 </code></pre>
