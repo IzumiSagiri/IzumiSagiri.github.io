@@ -1,34 +1,35 @@
-<html><head><title></title></head><body><h1>「IoTに基づくスマートホームシステムの設計と実装」のあらまし</h1>
-<h2>はじめに</h2>
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Untitled Document</title><style>code{color:#c7254e;background-color:#f9f2f4;border-radius:4px}code,kbd{padding:2px 4px}kbd{color:#fff;background-color:#333;border-radius:3px;box-shadow:inset 0 -1px 0 rgba(0,0,0,.25)}kbd kbd{padding:0;font-size:100%;box-shadow:none}pre{display:block;margin:0 0 10px;word-break:break-all;word-wrap:break-word;color:#333;background-color:#f5f5f5;border:1px solid #ccc;border-radius:4px}pre code{padding:0;font-size:inherit;color:inherit;white-space:pre-wrap;background-color:transparent;border-radius:0}.pre-scrollable{max-height:340px;overflow-y:scroll}fieldset{border:0;min-width:0}legend{display:block;width:100%;margin-bottom:20px;font-size:21px;line-height:inherit;color:#333;border-bottom:1px solid #e5e5e5}label{display:inline-block;max-width:100%;margin-bottom:5px;font-weight:700}input[type="radio"],input[type="checkbox"]{margin:1px 0 0;line-height:normal}input[type="file"]{display:block}input[type="range"]{display:block;width:100%}select[multiple],select[size]{height:auto}input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}output{padding-top:7px}output,.form-control{display:block;font-size:14px;line-height:1.4285714;color:#555}.form-control{width:100%;height:34px;padding:6px 12px;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}.form-control:focus{border-color:#66afe9;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}.form-control::-moz-placeholder{color:#777;opacity:1}.form-control:-ms-input-placeholder{color:#777}.form-control::-webkit-input-placeholder{color:#777}.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control{cursor:not-allowed;background-color:#eee;opacity:1}textarea.form-control{height:auto}input[type="date"],input[type="time"],input[type="datetime-local"],input[type="month"]{line-height:34px;line-height:1.4285714 \0}input[type="date"].input-sm,.form-horizontal .form-group-sm input[type="date"].form-control,.input-group-sm>input[type="date"].form-control,.input-group-sm>input[type="date"].input-group-addon,.input-group-sm>.input-group-btn>input[type="date"].btn,input[type="time"].input-sm,.form-horizontal .form-group-sm input[type="time"].form-control,.input-group-sm>input[type="time"].form-control,.input-group-sm>input[type="time"].input-group-addon,.input-group-sm>.input-group-btn>input[type="time"].btn,input[type="datetime-local"].input-sm,.form-horizontal .form-group-sm input[type="datetime-local"].form-control,.input-group-sm>input[type="datetime-local"].form-control,.input-group-sm>input[type="datetime-local"].input-group-addon,.input-group-sm>.input-group-btn>input[type="datetime-local"].btn,input[type="month"].input-sm,.form-horizontal .form-group-sm input[type="month"].form-control,.input-group-sm>input[type="month"].form-control,.input-group-sm>input[type="month"].input-group-addon,.input-group-sm>.input-group-btn>input[type="month"].btn{line-height:30px}input[type="date"].input-lg,.form-horizontal .form-group-lg input[type="date"].form-control,.input-group-lg>input[type="date"].form-control,.input-group-lg>input[type="date"].input-group-addon,.input-group-lg>.input-group-btn>input[type="date"].btn,input[type="time"].input-lg,.form-horizontal .form-group-lg input[type="time"].form-control,.input-group-lg>input[type="time"].form-control,.input-group-lg>input[type="time"].input-group-addon,.input-group-lg>.input-group-btn>input[type="time"].btn,input[type="datetime-local"].input-lg,.form-horizontal .form-group-lg input[type="datetime-local"].form-control,.input-group-lg>input[type="datetime-local"].form-control,.input-group-lg>input[type="datetime-local"].input-group-addon,.input-group-lg>.input-group-btn>input[type="datetime-local"].btn,input[type="month"].input-lg,.form-horizontal .form-group-lg input[type="month"].form-control,.input-group-lg>input[type="month"].form-control,.input-group-lg>input[type="month"].input-group-addon,.input-group-lg>.input-group-btn>input[type="month"].btn{line-height:46px}.form-group{margin-bottom:15px}.radio,.checkbox{position:relative;display:block;min-height:20px;margin-top:10px;margin-bottom:10px}.radio label,.checkbox label{padding-left:20px;margin-bottom:0;font-weight:400;cursor:pointer}.radio input[type="radio"],.radio-inline input[type="radio"],.checkbox input[type="checkbox"],.checkbox-inline input[type="checkbox"]{position:absolute;margin-left:-20px;margin-top:4px \9}.radio+.radio,.checkbox+.checkbox{margin-top:-5px}.radio-inline,.checkbox-inline{display:inline-block;padding-left:20px;margin-bottom:0;vertical-align:middle;font-weight:400;cursor:pointer}.radio-inline+.radio-inline,.checkbox-inline+.checkbox-inline{margin-top:0;margin-left:10px}input[type="radio"][disabled],input[type="radio"].disabled,fieldset[disabled] input[type="radio"],input[type="checkbox"][disabled],input[type="checkbox"].disabled,fieldset[disabled] input[type="checkbox"],.radio-inline.disabled,fieldset[disabled] .radio-inline,.checkbox-inline.disabled,fieldset[disabled] .checkbox-inline,.radio.disabled label,fieldset[disabled] .radio label,.checkbox.disabled label,fieldset[disabled] .checkbox label{cursor:not-allowed}.form-control-static{padding-top:7px;padding-bottom:7px;margin-bottom:0}.form-control-static.input-lg,.form-horizontal .form-group-lg .form-control-static.form-control,.input-group-lg>.form-control-static.form-control,.input-group-lg>.form-control-static.input-group-addon,.input-group-lg>.input-group-btn>.form-control-static.btn,.form-control-static.input-sm,.form-horizontal .form-group-sm .form-control-static.form-control,.input-group-sm>.form-control-static.form-control,.input-group-sm>.form-control-static.input-group-addon,.input-group-sm>.input-group-btn>.form-control-static.btn{padding-left:0;padding-right:0}.input-sm,.form-horizontal .form-group-sm .form-control,.input-group-sm>.form-control{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}.input-group-sm>.input-group-addon{height:30px;line-height:1.5}.input-group-sm>.input-group-btn>.btn{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}select.input-sm,.form-horizontal .form-group-sm select.form-control,.input-group-sm>select.form-control,.input-group-sm>select.input-group-addon,.input-group-sm>.input-group-btn>select.btn{height:30px;line-height:30px}textarea.input-sm,.form-horizontal .form-group-sm textarea.form-control,.input-group-sm>textarea.form-control,.input-group-sm>textarea.input-group-addon,.input-group-sm>.input-group-btn>textarea.btn,select[multiple].input-sm,.form-horizontal .form-group-sm select[multiple].form-control,.input-group-sm>select[multiple].form-control,.input-group-sm>select[multiple].input-group-addon,.input-group-sm>.input-group-btn>select[multiple].btn{height:auto}.input-lg,.form-horizontal .form-group-lg .form-control,.input-group-lg>.form-control{height:46px;padding:10px 16px;font-size:18px;line-height:1.33;border-radius:6px}.input-group-lg>.input-group-addon{height:46px;line-height:1.33}.input-group-lg>.input-group-btn>.btn{height:46px;padding:10px 16px;font-size:18px;line-height:1.33;border-radius:6px}select.input-lg,.form-horizontal .form-group-lg select.form-control,.input-group-lg>select.form-control,.input-group-lg>select.input-group-addon,.input-group-lg>.input-group-btn>select.btn{height:46px;line-height:46px}textarea.input-lg,.form-horizontal .form-group-lg textarea.form-control,.input-group-lg>textarea.form-control,.input-group-lg>textarea.input-group-addon,.input-group-lg>.input-group-btn>textarea.btn,select[multiple].input-lg,.form-horizontal .form-group-lg select[multiple].form-control,.input-group-lg>select[multiple].form-control,.input-group-lg>select[multiple].input-group-addon,.input-group-lg>.input-group-btn>select[multiple].btn{height:auto}.has-feedback{position:relative}.has-feedback .form-control{padding-right:42.5px}.form-control-feedback{position:absolute;top:25px;right:0;z-index:2;display:block;width:34px;height:34px;line-height:34px;text-align:center}.input-lg+.form-control-feedback,.input-lg+.form-horizontal .form-group-lg .form-control,.form-horizontal .form-group-lg .input-lg+.form-control,.input-lg+.input-group-lg>.form-control,.input-group-lg>.input-lg+.form-control,.input-lg+.input-group-lg>.input-group-addon,.input-group-lg>.input-lg+.input-group-addon,.input-lg+.input-group-lg>.input-group-btn>.btn,.input-group-lg>.input-group-btn>.input-lg+.btn{width:46px;height:46px;line-height:46px}.input-sm+.form-control-feedback,.input-sm+.form-horizontal .form-group-sm .form-control,.form-horizontal .form-group-sm .input-sm+.form-control,.input-sm+.input-group-sm>.form-control,.input-group-sm>.input-sm+.form-control,.input-sm+.input-group-sm>.input-group-addon,.input-group-sm>.input-sm+.input-group-addon,.input-sm+.input-group-sm>.input-group-btn>.btn,.input-group-sm>.input-group-btn>.input-sm+.btn{width:30px;height:30px;line-height:30px}.has-success .help-block,.has-success .control-label,.has-success .radio,.has-success .checkbox,.has-success .radio-inline,.has-success .checkbox-inline{color:#3c763d}.has-success .form-control{border-color:#3c763d;box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-success .form-control:focus{border-color:#2b542b;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168}.has-success .input-group-addon{color:#3c763d;border-color:#3c763d;background-color:#dff0d8}.has-success .form-control-feedback{color:#3c763d}.has-warning .help-block,.has-warning .control-label,.has-warning .radio,.has-warning .checkbox,.has-warning .radio-inline,.has-warning .checkbox-inline{color:#8a6d3b}.has-warning .form-control{border-color:#8a6d3b;box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-warning .form-control:focus{border-color:#66502c;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c09f6b}.has-warning .input-group-addon{color:#8a6d3b;border-color:#8a6d3b;background-color:#fcf8e3}.has-warning .form-control-feedback{color:#8a6d3b}.has-error .help-block,.has-error .control-label,.has-error .radio,.has-error .checkbox,.has-error .radio-inline,.has-error .checkbox-inline{color:#a94442}.has-error .form-control{border-color:#a94442;box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-error .form-control:focus{border-color:#843534;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483}.has-error .input-group-addon{color:#a94442;border-color:#a94442;background-color:#f2dede}.has-error .form-control-feedback{color:#a94442}.has-feedback label.sr-only~.form-control-feedback{top:0}.help-block{display:block;margin-top:5px;margin-bottom:10px;color:#737373}@media (min-width:768px){.form-inline .form-group{display:inline-block;margin-bottom:0;vertical-align:middle}.form-inline .form-control{display:inline-block;width:auto;vertical-align:middle}.form-inline .input-group{display:inline-table;vertical-align:middle}.form-inline .input-group .input-group-addon,.form-inline .input-group .input-group-btn,.form-inline .input-group .form-control{width:auto}.form-inline .input-group>.form-control{width:100%}.form-inline .control-label{margin-bottom:0;vertical-align:middle}.form-inline .radio,.form-inline .checkbox{display:inline-block;margin-top:0;margin-bottom:0;vertical-align:middle}.form-inline .radio label,.form-inline .checkbox label{padding-left:0}.form-inline .radio input[type="radio"],.form-inline .checkbox input[type="checkbox"]{position:relative;margin-left:0}.form-inline .has-feedback .form-control-feedback{top:0}}.form-horizontal .radio,.form-horizontal .checkbox,.form-horizontal .radio-inline,.form-horizontal .checkbox-inline{margin-top:0;margin-bottom:0;padding-top:7px}.form-horizontal .radio,.form-horizontal .checkbox{min-height:27px}.form-horizontal .form-group{margin-left:-15px;margin-right:-15px}.form-horizontal .form-group:before{content:" ";display:table}.form-horizontal .form-group:after{content:" ";display:table;clear:both}@media (min-width:768px){.form-horizontal .control-label{text-align:right;margin-bottom:0;padding-top:7px}}.form-horizontal .has-feedback .form-control-feedback{top:0;right:15px}@media (min-width:768px){.form-horizontal .form-group-lg .control-label{padding-top:14.3px}}@media (min-width:768px){.form-horizontal .form-group-sm .control-label{padding-top:6px}}.btn{display:inline-block;vertical-align:middle;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.btn:focus,.btn:active:focus,.btn.active:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.btn:hover,.btn:focus{color:#333;text-decoration:none}.btn:active,.btn.active{outline:0;background-image:none;box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn.disabled,.btn[disabled],fieldset[disabled] .btn{cursor:not-allowed;pointer-events:none;opacity:.65;filter:alpha(opacity=65);box-shadow:none}.btn-default{color:#333;background-color:#fff;border-color:#ccc}.btn-default:hover,.btn-default:focus,.btn-default:active,.btn-default.active,.open>.btn-default.dropdown-toggle{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default:active,.btn-default.active,.open>.btn-default.dropdown-toggle{background-image:none}.btn-default.disabled,.btn-default.disabled:hover,.btn-default.disabled:focus,.btn-default.disabled:active,.btn-default.disabled.active,.btn-default[disabled],.btn-default[disabled]:hover,.btn-default[disabled]:focus,.btn-default[disabled]:active,.btn-default[disabled].active,fieldset[disabled] .btn-default,fieldset[disabled] .btn-default:hover,fieldset[disabled] .btn-default:focus,fieldset[disabled] .btn-default:active,fieldset[disabled] .btn-default.active{background-color:#fff;border-color:#ccc}.btn-default .badge{color:#fff;background-color:#333}.btn-primary{color:#fff;background-color:#428bca;border-color:#3580bd}.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open>.btn-primary.dropdown-toggle{color:#fff;background-color:#3073a9;border-color:#28608e}.btn-primary:active,.btn-primary.active,.open>.btn-primary.dropdown-toggle{background-image:none}.btn-primary.disabled,.btn-primary.disabled:hover,.btn-primary.disabled:focus,.btn-primary.disabled:active,.btn-primary.disabled.active,.btn-primary[disabled],.btn-primary[disabled]:hover,.btn-primary[disabled]:focus,.btn-primary[disabled]:active,.btn-primary[disabled].active,fieldset[disabled] .btn-primary,fieldset[disabled] .btn-primary:hover,fieldset[disabled] .btn-primary:focus,fieldset[disabled] .btn-primary:active,fieldset[disabled] .btn-primary.active{background-color:#428bca;border-color:#3580bd}.btn-primary .badge{color:#428bca;background-color:#fff}.btn-success{color:#fff;background-color:#5cb85c;border-color:#4eae4c}.btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open>.btn-success.dropdown-toggle{color:#fff;background-color:#469d44;border-color:#3b8439}.btn-success:active,.btn-success.active,.open>.btn-success.dropdown-toggle{background-image:none}.btn-success.disabled,.btn-success.disabled:hover,.btn-success.disabled:focus,.btn-success.disabled:active,.btn-success.disabled.active,.btn-success[disabled],.btn-success[disabled]:hover,.btn-success[disabled]:focus,.btn-success[disabled]:active,.btn-success[disabled].active,fieldset[disabled] .btn-success,fieldset[disabled] .btn-success:hover,fieldset[disabled] .btn-success:focus,fieldset[disabled] .btn-success:active,fieldset[disabled] .btn-success.active{background-color:#5cb85c;border-color:#4eae4c}.btn-success .badge{color:#5cb85c;background-color:#fff}.btn-info{color:#fff;background-color:#5bc0de;border-color:#46bada}.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-info.active,.open>.btn-info.dropdown-toggle{color:#fff;background-color:#31b2d5;border-color:#269cbc}.btn-info:active,.btn-info.active,.open>.btn-info.dropdown-toggle{background-image:none}.btn-info.disabled,.btn-info.disabled:hover,.btn-info.disabled:focus,.btn-info.disabled:active,.btn-info.disabled.active,.btn-info[disabled],.btn-info[disabled]:hover,.btn-info[disabled]:focus,.btn-info[disabled]:active,.btn-info[disabled].active,fieldset[disabled] .btn-info,fieldset[disabled] .btn-info:hover,fieldset[disabled] .btn-info:focus,fieldset[disabled] .btn-info:active,fieldset[disabled] .btn-info.active{background-color:#5bc0de;border-color:#46bada}.btn-info .badge{color:#5bc0de;background-color:#fff}.btn-warning{color:#fff;background-color:#f0ad4e;border-color:#eea236}.btn-warning:hover,.btn-warning:focus,.btn-warning:active,.btn-warning.active,.open>.btn-warning.dropdown-toggle{color:#fff;background-color:#ec971f;border-color:#d58112}.btn-warning:active,.btn-warning.active,.open>.btn-warning.dropdown-toggle{background-image:none}.btn-warning.disabled,.btn-warning.disabled:hover,.btn-warning.disabled:focus,.btn-warning.disabled:active,.btn-warning.disabled.active,.btn-warning[disabled],.btn-warning[disabled]:hover,.btn-warning[disabled]:focus,.btn-warning[disabled]:active,.btn-warning[disabled].active,fieldset[disabled] .btn-warning,fieldset[disabled] .btn-warning:hover,fieldset[disabled] .btn-warning:focus,fieldset[disabled] .btn-warning:active,fieldset[disabled] .btn-warning.active{background-color:#f0ad4e;border-color:#eea236}.btn-warning .badge{color:#f0ad4e;background-color:#fff}.btn-danger{color:#fff;background-color:#d9534f;border-color:#d43d3a}.btn-danger:hover,.btn-danger:focus,.btn-danger:active,.btn-danger.active,.open>.btn-danger.dropdown-toggle{color:#fff;background-color:#c92e2c;border-color:#ac2525}.btn-danger:active,.btn-danger.active,.open>.btn-danger.dropdown-toggle{background-image:none}.btn-danger.disabled,.btn-danger.disabled:hover,.btn-danger.disabled:focus,.btn-danger.disabled:active,.btn-danger.disabled.active,.btn-danger[disabled],.btn-danger[disabled]:hover,.btn-danger[disabled]:focus,.btn-danger[disabled]:active,.btn-danger[disabled].active,fieldset[disabled] .btn-danger,fieldset[disabled] .btn-danger:hover,fieldset[disabled] .btn-danger:focus,fieldset[disabled] .btn-danger:active,fieldset[disabled] .btn-danger.active{background-color:#d9534f;border-color:#d43d3a}.btn-danger .badge{color:#d9534f;background-color:#fff}.btn-link{color:#428bca;font-weight:400;cursor:pointer;border-radius:0}.btn-link,.btn-link:active,.btn-link[disabled],fieldset[disabled] .btn-link{background-color:transparent;box-shadow:none}.btn-link,.btn-link:hover,.btn-link:focus,.btn-link:active{border-color:transparent}.btn-link:hover,.btn-link:focus{color:#2a6596;text-decoration:underline;background-color:transparent}.btn-link[disabled]:hover,.btn-link[disabled]:focus,fieldset[disabled] .btn-link:hover,fieldset[disabled] .btn-link:focus{color:#777;text-decoration:none}.btn-lg{padding:10px 16px;font-size:18px;line-height:1.33;border-radius:6px}.btn-sm{padding:5px 10px}.btn-sm,.btn-xs{font-size:12px;line-height:1.5;border-radius:3px}.btn-xs{padding:1px 5px}.btn-block{display:block;width:100%}.btn-block+.btn-block{margin-top:5px}input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"].btn-block{width:100%}.fade{opacity:0;-webkit-transition:opacity .15s linear;transition:opacity .15s linear}.fade.in{opacity:1}.collapse{display:none}.collapse.in{display:block}tr.collapse.in{display:table-row}tbody.collapse.in{display:table-row-group}.collapsing{position:relative;height:0;overflow:hidden;-webkit-transition:height .35s ease;transition:height .35s ease}.input-group{position:relative;display:table;border-collapse:separate}.input-group[class*="col-"]{float:none;padding-left:0;padding-right:0}.input-group .form-control{position:relative;z-index:2;float:left;width:100%;margin-bottom:0}.input-group-addon,.input-group-btn,.input-group .form-control{display:table-cell}.input-group-addon:not(:first-child):not(:last-child),.input-group-btn:not(:first-child):not(:last-child),.input-group .form-control:not(:first-child):not(:last-child){border-radius:0}.input-group-addon{white-space:nowrap}.input-group-addon,.input-group-btn{width:1%;vertical-align:middle}.input-group-addon{padding:6px 12px;font-size:14px;font-weight:400;line-height:1;color:#555;text-align:center;background-color:#eee;border:1px solid #ccc;border-radius:4px}.input-group-addon.input-sm,.form-horizontal .form-group-sm .input-group-addon.form-control,.input-group-sm>.input-group-addon.form-control,.input-group-sm>.input-group-addon,.input-group-sm>.input-group-btn>.input-group-addon.btn{padding:5px 10px;font-size:12px;border-radius:3px}.input-group-addon.input-lg,.form-horizontal .form-group-lg .input-group-addon.form-control,.input-group-lg>.input-group-addon.form-control,.input-group-lg>.input-group-addon,.input-group-lg>.input-group-btn>.input-group-addon.btn{padding:10px 16px;font-size:18px;border-radius:6px}.input-group-addon input[type="radio"],.input-group-addon input[type="checkbox"]{margin-top:0}.input-group .form-control:first-child,.input-group-addon:first-child,.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group>.btn,.input-group-btn:first-child>.dropdown-toggle,.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),.input-group-btn:last-child>.btn-group:not(:last-child)>.btn{border-bottom-right-radius:0;border-top-right-radius:0}.input-group-addon:first-child{border-right:0}.input-group .form-control:last-child,.input-group-addon:last-child,.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group>.btn,.input-group-btn:last-child>.dropdown-toggle,.input-group-btn:first-child>.btn:not(:first-child),.input-group-btn:first-child>.btn-group:not(:first-child)>.btn{border-bottom-left-radius:0;border-top-left-radius:0}.input-group-addon:last-child{border-left:0}.input-group-btn{font-size:0;white-space:nowrap}.input-group-btn,.input-group-btn>.btn{position:relative}.input-group-btn>.btn+.btn{margin-left:-1px}.input-group-btn>.btn:hover,.input-group-btn>.btn:focus,.input-group-btn>.btn:active{z-index:2}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-1px}.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group{margin-left:-1px}.pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}.pagination>li{display:inline}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;line-height:1.4285714;text-decoration:none;color:#428bca;background-color:#fff;border:1px solid #ddd;margin-left:-1px}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-bottom-left-radius:4px;border-top-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-bottom-right-radius:4px;border-top-right-radius:4px}.pagination>li>a:hover,.pagination>li>a:focus,.pagination>li>span:hover,.pagination>li>span:focus{color:#2a6596;background-color:#eee;border-color:#ddd}.pagination>.active>a,.pagination>.active>a:hover,.pagination>.active>a:focus,.pagination>.active>span,.pagination>.active>span:hover,.pagination>.active>span:focus{z-index:2;color:#fff;background-color:#428bca;border-color:#428bca;cursor:default}.pagination>.disabled>span,.pagination>.disabled>span:hover,.pagination>.disabled>span:focus,.pagination>.disabled>a,.pagination>.disabled>a:hover,.pagination>.disabled>a:focus{color:#777;background-color:#fff;border-color:#ddd;cursor:not-allowed}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-bottom-left-radius:6px;border-top-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-bottom-right-radius:6px;border-top-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-bottom-left-radius:3px;border-top-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-bottom-right-radius:3px;border-top-right-radius:3px}.close{float:right;font-size:21px;font-weight:700;line-height:1;color:#000;text-shadow:0 1px 0 #fff;opacity:.2;filter:alpha(opacity=20)}.close:hover,.close:focus{color:#000;text-decoration:none;cursor:pointer;opacity:.5;filter:alpha(opacity=50)}button.close{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance:none}.modal-open,.modal{overflow:hidden}.modal{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;-webkit-overflow-scrolling:touch;outline:0}.modal.fade .modal-dialog{-webkit-transform:translate3d(0,-25%,0);transform:translate3d(0,-25%,0);-webkit-transition:-webkit-transform .3s ease-out;transition:transform .3s ease-out}.modal.in .modal-dialog{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.modal-open .modal{overflow-x:hidden;overflow-y:auto}.modal-dialog{position:relative;width:auto;margin:10px}.modal-content{position:relative;background-color:#fff;border:1px solid #999;border:1px solid rgba(0,0,0,.2);border-radius:6px;box-shadow:0 3px 9px rgba(0,0,0,.5);background-clip:padding-box;outline:0}.modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1040;background-color:#000}.modal-backdrop.fade{opacity:0;filter:alpha(opacity=0)}.modal-backdrop.in{opacity:.5;filter:alpha(opacity=50)}.modal-header{padding:15px;border-bottom:1px solid #e5e5e5;min-height:16.4285714px}.modal-header .close{margin-top:-2px}.modal-title{margin:0;line-height:1.4285714}.modal-body{position:relative;padding:15px}.modal-footer{padding:15px;text-align:right;border-top:1px solid #e5e5e5}.modal-footer:before,.modal-footer:after{content:" ";display:table}.modal-footer:after{clear:both}.modal-footer .btn+.btn{margin-left:5px;margin-bottom:0}.modal-footer .btn-group .btn+.btn{margin-left:-1px}.modal-footer .btn-block+.btn-block{margin-left:0}.modal-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}@media (min-width:768px){.modal-dialog{width:600px;margin:30px auto}.modal-content{box-shadow:0 5px 15px rgba(0,0,0,.5)}.modal-sm{width:300px}}@media (min-width:992px){.modal-lg{width:900px}}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.center-block{display:block;margin-left:auto;margin-right:auto}.pull-right{float:right!important}.pull-left{float:left!important}.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important;visibility:hidden!important}.affix{position:fixed;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.hljs{display:block;overflow-x:auto;padding:.5em;background:#002b36;color:#839496;-webkit-text-size-adjust:none}.hljs-comment,.hljs-template_comment,.diff .hljs-header,.hljs-doctype,.hljs-pi,.lisp .hljs-string,.hljs-javadoc{color:#586e75}.hljs-keyword,.hljs-winutils,.method,.hljs-addition,.css .hljs-tag,.hljs-request,.hljs-status,.nginx .hljs-title{color:#859900}.hljs-number,.hljs-command,.hljs-string,.hljs-tag .hljs-value,.hljs-rules .hljs-value,.hljs-phpdoc,.hljs-dartdoc,.tex .hljs-formula,.hljs-regexp,.hljs-hexcolor,.hljs-link_url{color:#2aa198}.hljs-title,.hljs-localvars,.hljs-chunk,.hljs-decorator,.hljs-built_in,.hljs-identifier,.vhdl .hljs-literal,.hljs-id,.css .hljs-function{color:#268bd2}.hljs-attribute,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number,.hljs-constant,.hljs-class .hljs-title,.hljs-parent,.hljs-type,.hljs-link_reference{color:#b58900}.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-pragma,.hljs-shebang,.hljs-symbol,.hljs-symbol .hljs-string,.diff .hljs-change,.hljs-special,.hljs-attr_selector,.hljs-subst,.hljs-cdata,.css .hljs-pseudo,.hljs-header{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#073642}*,*:before,*:after{box-sizing:border-box}html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}images{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd{font-size:1em}code,kbd,pre,samp{font-family:monospace,monospace}samp{font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}.debug{background-color:#ffc0cb!important}.ellipsis{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ir{background-color:transparent;border:0;overflow:hidden}.ir::before{content:'';display:block;height:150%;width:0}html{font-size:.875em;background:#fafafa;color:#373D49;font-family:Georgia,Cambria,serif;height:100%}@media screen and (min-width:27.5em){html{font-size:.875em}}@media screen and (min-width:46.25em){html{font-size:.875em}}@media screen and (min-width:62.5em){html{font-size:.875em}}@media screen and (min-width:87.5em){html{font-size:.875em}}body{font-size:1rem;font-family:Georgia,Cambria,serif;font-weight:400;line-height:2rem;height:100%}@media screen and (min-width:27.5em){body{font-size:1rem}}@media screen and (min-width:46.25em){body{font-size:1rem}}@media screen and (min-width:62.5em){body{font-size:1rem}}@media screen and (min-width:87.5em){body{font-size:1rem}}ul,ol{margin-bottom:.83999rem;padding-top:.16001rem}@media screen and (min-width:27.5em){ul,ol{margin-bottom:.83999rem;padding-top:.16001rem}}@media screen and (min-width:46.25em){ul,ol{margin-bottom:.83999rem;padding-top:.16001rem}}@media screen and (min-width:62.5em){ul,ol{margin-bottom:.83999rem;padding-top:.16001rem}}@media screen and (min-width:87.5em){ul,ol{margin-bottom:.83999rem;padding-top:.16001rem}}li{-webkit-font-feature-settings:'kern' 1,'onum' 1,'liga' 1;-moz-font-feature-settings:'kern' 1,'onum' 1,'liga' 1;font-feature-settings:'kern' 1,'onum' 1,'liga' 1;margin-left:1rem}li>ul,li>ol{margin-bottom:0}p{margin-bottom:1.33999rem;padding-top:.66001rem;-webkit-font-feature-settings:'kern' 1,'onum' 1,'liga' 1;-moz-font-feature-settings:'kern' 1,'onum' 1,'liga' 1;font-feature-settings:'kern' 1,'onum' 1,'liga' 1;margin-top:0}@media screen and (min-width:27.5em){p{margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:46.25em){p{margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:62.5em){p{margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:87.5em){p{margin-bottom:1.33999rem;padding-top:.66001rem}}pre{font-size:1rem;margin-bottom:1.33999rem;padding:.66001rem 9.5px 9.5px;line-height:2rem;background:-webkit-linear-gradient(top,#fff 0,#fff .75rem,#f5f7fa .75rem,#f5f7fa 2.75rem,#fff 2.75rem,#fff 4rem);background:linear-gradient(to bottom,#fff 0,#fff .75rem,#f5f7fa .75rem,#f5f7fa 2.75rem,#fff 2.75rem,#fff 4rem);background-size:100% 4rem;border-color:#D3DAEA}@media screen and (min-width:27.5em){pre{font-size:1rem;margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:46.25em){pre{font-size:1rem;margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:62.5em){pre{font-size:1rem;margin-bottom:1.33999rem;padding-top:.66001rem}}@media screen and (min-width:87.5em){pre{font-size:1rem;margin-bottom:1.33999rem;padding-top:.66001rem}}blockquote{margin:0}blockquote p{font-size:1rem;margin-bottom:.33999rem;font-style:italic;padding:.66001rem 1rem 1rem;border-left:3px solid #A0AABF}@media screen and (min-width:27.5em){blockquote p{font-size:1rem;margin-bottom:.33999rem;padding-top:.66001rem}}@media screen and (min-width:46.25em){blockquote p{font-size:1rem;margin-bottom:.33999rem;padding-top:.66001rem}}@media screen and (min-width:62.5em){blockquote p{font-size:1rem;margin-bottom:.33999rem;padding-top:.66001rem}}@media screen and (min-width:87.5em){blockquote p{font-size:1rem;margin-bottom:.33999rem;padding-top:.66001rem}}th,td{padding:12px}h1,h2,h3,h4,h5,h6{font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-feature-settings:'dlig' 1,'liga' 1,'lnum' 1,'kern' 1;-moz-font-feature-settings:'dlig' 1,'liga' 1,'lnum' 1,'kern' 1;font-feature-settings:'dlig' 1,'liga' 1,'lnum' 1,'kern' 1;font-style:normal;font-weight:600;margin-top:0}h1{line-height:3rem;font-size:2.05714rem;margin-bottom:.21999rem;padding-top:.78001rem}@media screen and (min-width:27.5em){h1{font-size:2.05714rem;margin-bottom:.21999rem;padding-top:.78001rem}}@media screen and (min-width:46.25em){h1{font-size:2.05714rem;margin-bottom:.21999rem;padding-top:.78001rem}}@media screen and (min-width:62.5em){h1{font-size:2.05714rem;margin-bottom:.21999rem;padding-top:.78001rem}}@media screen and (min-width:87.5em){h1{font-size:2.05714rem;margin-bottom:.21999rem;padding-top:.78001rem}}h2{line-height:3rem;font-size:1.95312rem;margin-bottom:.18358rem;padding-top:.81642rem}@media screen and (min-width:27.5em){h2{font-size:1.95312rem;margin-bottom:.18358rem;padding-top:.81642rem}}@media screen and (min-width:46.25em){h2{font-size:1.95312rem;margin-bottom:.18358rem;padding-top:.81642rem}}@media screen and (min-width:62.5em){h2{font-size:1.95312rem;margin-bottom:.18358rem;padding-top:.81642rem}}@media screen and (min-width:87.5em){h2{font-size:1.95312rem;margin-bottom:.18358rem;padding-top:.81642rem}}h3{line-height:3rem;font-size:1.64571rem;margin-bottom:.07599rem;padding-top:.92401rem}@media screen and (min-width:27.5em){h3{font-size:1.64571rem;margin-bottom:.07599rem;padding-top:.92401rem}}@media screen and (min-width:46.25em){h3{font-size:1.64571rem;margin-bottom:.07599rem;padding-top:.92401rem}}@media screen and (min-width:62.5em){h3{font-size:1.64571rem;margin-bottom:.07599rem;padding-top:.92401rem}}@media screen and (min-width:87.5em){h3{font-size:1.64571rem;margin-bottom:.07599rem;padding-top:.92401rem}}h4{font-size:1.5625rem;margin-bottom:.54686rem;padding-top:.45314rem}@media screen and (min-width:27.5em){h4{font-size:1.5625rem;margin-bottom:.54686rem;padding-top:.45314rem}}@media screen and (min-width:46.25em){h4{font-size:1.5625rem;margin-bottom:.54686rem;padding-top:.45314rem}}@media screen and (min-width:62.5em){h4{font-size:1.5625rem;margin-bottom:.54686rem;padding-top:.45314rem}}@media screen and (min-width:87.5em){h4{font-size:1.5625rem;margin-bottom:.54686rem;padding-top:.45314rem}}h5{font-size:1.25rem;margin-bottom:-.56251rem;padding-top:.56251rem}@media screen and (min-width:27.5em){h5{font-size:1.25rem;margin-bottom:-.56251rem;padding-top:.56251rem}}@media screen and (min-width:46.25em){h5{font-size:1.25rem;margin-bottom:-.56251rem;padding-top:.56251rem}}@media screen and (min-width:62.5em){h5{font-size:1.25rem;margin-bottom:-.56251rem;padding-top:.56251rem}}@media screen and (min-width:87.5em){h5{font-size:1.25rem;margin-bottom:-.56251rem;padding-top:.56251rem}}h6{font-size:1rem;margin-bottom:-.65001rem;padding-top:.65001rem}@media screen and (min-width:27.5em){h6{font-size:1rem;margin-bottom:-.65001rem;padding-top:.65001rem}}@media screen and (min-width:46.25em){h6{font-size:1rem;margin-bottom:-.65001rem;padding-top:.65001rem}}@media screen and (min-width:62.5em){h6{font-size:1rem;margin-bottom:-.65001rem;padding-top:.65001rem}}@media screen and (min-width:87.5em){h6{font-size:1rem;margin-bottom:-.65001rem;padding-top:.65001rem}}a{cursor:pointer;color:#35D7BB;text-decoration:none}a:hover,a:focus{border-bottom-color:#35D7BB;color:#dff9f4}img{height:auto;max-width:100%}.g{display:block}.g:after{clear:both;content:'';display:table}.g-b{float:left;margin:0;width:100%}.g{margin-left:-16px;margin-right:-16px}.g-b{padding-left:16px;padding-right:16px}@media screen and (min-width:27.5em){.g{margin-left:-16px;margin-right:-16px}.g-b{padding-left:16px;padding-right:16px}}@media screen and (min-width:46.25em){.g{margin-left:-16px;margin-right:-16px}.g-b{padding-left:16px;padding-right:16px}}@media screen and (min-width:62.5em){.g{margin-left:-16px;margin-right:-16px}.g-b{padding-left:16px;padding-right:16px}}.g-b--center{display:block;float:none;margin:0 auto}.g-b--right{float:right}.g-b--1of1{width:100%}.g-b--1of2,.g-b--2of4,.g-b--3of6,.g-b--4of8,.g-b--5of10,.g-b--6of12{width:50%}.g-b--1of3,.g-b--2of6,.g-b--4of12{width:33.333%}.g-b--2of3,.g-b--4of6,.g-b--8of12{width:66.666%}.g-b--1of4,.g-b--2of8,.g-b--3of12{width:25%}.g-b--3of4,.g-b--6of8,.g-b--9of12{width:75%}.g-b--1of5,.g-b--2of10{width:20%}.g-b--2of5,.g-b--4of10{width:40%}.g-b--3of5,.g-b--6of10{width:60%}.g-b--4of5,.g-b--8of10{width:80%}.g-b--1of6,.g-b--2of12{width:16.666%}.g-b--5of6,.g-b--10of12{width:83.333%}.g-b--1of8{width:12.5%}.g-b--3of8{width:37.5%}.g-b--5of8{width:62.5%}.g-b--7of8{width:87.5%}.g-b--1of10{width:10%}.g-b--3of10{width:30%}.g-b--7of10{width:70%}.g-b--9of10{width:90%}.g-b--1of12{width:8.333%}.g-b--5of12{width:41.666%}.g-b--7of12{width:58.333%}.g-b--11of12{width:91.666%}.g-b--push--1of1{margin-left:100%}.g-b--push--1of2,.g-b--push--2of4,.g-b--push--3of6,.g-b--push--4of8,.g-b--push--5of10,.g-b--push--6of12{margin-left:50%}.g-b--push--1of3,.g-b--push--2of6,.g-b--push--4of12{margin-left:33.333%}.g-b--push--2of3,.g-b--push--4of6,.g-b--push--8of12{margin-left:66.666%}.g-b--push--1of4,.g-b--push--2of8,.g-b--push--3of12{margin-left:25%}.g-b--push--3of4,.g-b--push--6of8,.g-b--push--9of12{margin-left:75%}.g-b--push--1of5,.g-b--push--2of10{margin-left:20%}.g-b--push--2of5,.g-b--push--4of10{margin-left:40%}.g-b--push--3of5,.g-b--push--6of10{margin-left:60%}.g-b--push--4of5,.g-b--push--8of10{margin-left:80%}.g-b--push--1of6,.g-b--push--2of12{margin-left:16.666%}.g-b--push--5of6,.g-b--push--10of12{margin-left:83.333%}.g-b--push--1of8{margin-left:12.5%}.g-b--push--3of8{margin-left:37.5%}.g-b--push--5of8{margin-left:62.5%}.g-b--push--7of8{margin-left:87.5%}.g-b--push--1of10{margin-left:10%}.g-b--push--3of10{margin-left:30%}.g-b--push--7of10{margin-left:70%}.g-b--push--9of10{margin-left:90%}.g-b--push--1of12{margin-left:8.333%}.g-b--push--5of12{margin-left:41.666%}.g-b--push--7of12{margin-left:58.333%}.g-b--push--11of12{margin-left:91.666%}.g-b--pull--1of1{margin-right:100%}.g-b--pull--1of2,.g-b--pull--2of4,.g-b--pull--3of6,.g-b--pull--4of8,.g-b--pull--5of10,.g-b--pull--6of12{margin-right:50%}.g-b--pull--1of3,.g-b--pull--2of6,.g-b--pull--4of12{margin-right:33.333%}.g-b--pull--2of3,.g-b--pull--4of6,.g-b--pull--8of12{margin-right:66.666%}.g-b--pull--1of4,.g-b--pull--2of8,.g-b--pull--3of12{margin-right:25%}.g-b--pull--3of4,.g-b--pull--6of8,.g-b--pull--9of12{margin-right:75%}.g-b--pull--1of5,.g-b--pull--2of10{margin-right:20%}.g-b--pull--2of5,.g-b--pull--4of10{margin-right:40%}.g-b--pull--3of5,.g-b--pull--6of10{margin-right:60%}.g-b--pull--4of5,.g-b--pull--8of10{margin-right:80%}.g-b--pull--1of6,.g-b--pull--2of12{margin-right:16.666%}.g-b--pull--5of6,.g-b--pull--10of12{margin-right:83.333%}.g-b--pull--1of8{margin-right:12.5%}.g-b--pull--3of8{margin-right:37.5%}.g-b--pull--5of8{margin-right:62.5%}.g-b--pull--7of8{margin-right:87.5%}.g-b--pull--1of10{margin-right:10%}.g-b--pull--3of10{margin-right:30%}.g-b--pull--7of10{margin-right:70%}.g-b--pull--9of10{margin-right:90%}.g-b--pull--1of12{margin-right:8.333%}.g-b--pull--5of12{margin-right:41.666%}.g-b--pull--7of12{margin-right:58.333%}.g-b--pull--11of12{margin-right:91.666%}@media screen and (min-width:27.5em){.g-b--m1of1{width:100%}.g-b--m1of2,.g-b--m2of4,.g-b--m3of6,.g-b--m4of8,.g-b--m5of10,.g-b--m6of12{width:50%}.g-b--m1of3,.g-b--m2of6,.g-b--m4of12{width:33.333%}.g-b--m2of3,.g-b--m4of6,.g-b--m8of12{width:66.666%}.g-b--m1of4,.g-b--m2of8,.g-b--m3of12{width:25%}.g-b--m3of4,.g-b--m6of8,.g-b--m9of12{width:75%}.g-b--m1of5,.g-b--m2of10{width:20%}.g-b--m2of5,.g-b--m4of10{width:40%}.g-b--m3of5,.g-b--m6of10{width:60%}.g-b--m4of5,.g-b--m8of10{width:80%}.g-b--m1of6,.g-b--m2of12{width:16.666%}.g-b--m5of6,.g-b--m10of12{width:83.333%}.g-b--m1of8{width:12.5%}.g-b--m3of8{width:37.5%}.g-b--m5of8{width:62.5%}.g-b--m7of8{width:87.5%}.g-b--m1of10{width:10%}.g-b--m3of10{width:30%}.g-b--m7of10{width:70%}.g-b--m9of10{width:90%}.g-b--m1of12{width:8.333%}.g-b--m5of12{width:41.666%}.g-b--m7of12{width:58.333%}.g-b--m11of12{width:91.666%}.g-b--push--m1of1{margin-left:100%}.g-b--push--m1of2,.g-b--push--m2of4,.g-b--push--m3of6,.g-b--push--m4of8,.g-b--push--m5of10,.g-b--push--m6of12{margin-left:50%}.g-b--push--m1of3,.g-b--push--m2of6,.g-b--push--m4of12{margin-left:33.333%}.g-b--push--m2of3,.g-b--push--m4of6,.g-b--push--m8of12{margin-left:66.666%}.g-b--push--m1of4,.g-b--push--m2of8,.g-b--push--m3of12{margin-left:25%}.g-b--push--m3of4,.g-b--push--m6of8,.g-b--push--m9of12{margin-left:75%}.g-b--push--m1of5,.g-b--push--m2of10{margin-left:20%}.g-b--push--m2of5,.g-b--push--m4of10{margin-left:40%}.g-b--push--m3of5,.g-b--push--m6of10{margin-left:60%}.g-b--push--m4of5,.g-b--push--m8of10{margin-left:80%}.g-b--push--m1of6,.g-b--push--m2of12{margin-left:16.666%}.g-b--push--m5of6,.g-b--push--m10of12{margin-left:83.333%}.g-b--push--m1of8{margin-left:12.5%}.g-b--push--m3of8{margin-left:37.5%}.g-b--push--m5of8{margin-left:62.5%}.g-b--push--m7of8{margin-left:87.5%}.g-b--push--m1of10{margin-left:10%}.g-b--push--m3of10{margin-left:30%}.g-b--push--m7of10{margin-left:70%}.g-b--push--m9of10{margin-left:90%}.g-b--push--m1of12{margin-left:8.333%}.g-b--push--m5of12{margin-left:41.666%}.g-b--push--m7of12{margin-left:58.333%}.g-b--push--m11of12{margin-left:91.666%}.g-b--pull--m1of1{margin-right:100%}.g-b--pull--m1of2,.g-b--pull--m2of4,.g-b--pull--m3of6,.g-b--pull--m4of8,.g-b--pull--m5of10,.g-b--pull--m6of12{margin-right:50%}.g-b--pull--m1of3,.g-b--pull--m2of6,.g-b--pull--m4of12{margin-right:33.333%}.g-b--pull--m2of3,.g-b--pull--m4of6,.g-b--pull--m8of12{margin-right:66.666%}.g-b--pull--m1of4,.g-b--pull--m2of8,.g-b--pull--m3of12{margin-right:25%}.g-b--pull--m3of4,.g-b--pull--m6of8,.g-b--pull--m9of12{margin-right:75%}.g-b--pull--m1of5,.g-b--pull--m2of10{margin-right:20%}.g-b--pull--m2of5,.g-b--pull--m4of10{margin-right:40%}.g-b--pull--m3of5,.g-b--pull--m6of10{margin-right:60%}.g-b--pull--m4of5,.g-b--pull--m8of10{margin-right:80%}.g-b--pull--m1of6,.g-b--pull--m2of12{margin-right:16.666%}.g-b--pull--m5of6,.g-b--pull--m10of12{margin-right:83.333%}.g-b--pull--m1of8{margin-right:12.5%}.g-b--pull--m3of8{margin-right:37.5%}.g-b--pull--m5of8{margin-right:62.5%}.g-b--pull--m7of8{margin-right:87.5%}.g-b--pull--m1of10{margin-right:10%}.g-b--pull--m3of10{margin-right:30%}.g-b--pull--m7of10{margin-right:70%}.g-b--pull--m9of10{margin-right:90%}.g-b--pull--m1of12{margin-right:8.333%}.g-b--pull--m5of12{margin-right:41.666%}.g-b--pull--m7of12{margin-right:58.333%}.g-b--pull--m11of12{margin-right:91.666%}}@media screen and (min-width:46.25em){.g-b--t1of1{width:100%}.g-b--t1of2,.g-b--t2of4,.g-b--t3of6,.g-b--t4of8,.g-b--t5of10,.g-b--t6of12{width:50%}.g-b--t1of3,.g-b--t2of6,.g-b--t4of12{width:33.333%}.g-b--t2of3,.g-b--t4of6,.g-b--t8of12{width:66.666%}.g-b--t1of4,.g-b--t2of8,.g-b--t3of12{width:25%}.g-b--t3of4,.g-b--t6of8,.g-b--t9of12{width:75%}.g-b--t1of5,.g-b--t2of10{width:20%}.g-b--t2of5,.g-b--t4of10{width:40%}.g-b--t3of5,.g-b--t6of10{width:60%}.g-b--t4of5,.g-b--t8of10{width:80%}.g-b--t1of6,.g-b--t2of12{width:16.666%}.g-b--t5of6,.g-b--t10of12{width:83.333%}.g-b--t1of8{width:12.5%}.g-b--t3of8{width:37.5%}.g-b--t5of8{width:62.5%}.g-b--t7of8{width:87.5%}.g-b--t1of10{width:10%}.g-b--t3of10{width:30%}.g-b--t7of10{width:70%}.g-b--t9of10{width:90%}.g-b--t1of12{width:8.333%}.g-b--t5of12{width:41.666%}.g-b--t7of12{width:58.333%}.g-b--t11of12{width:91.666%}.g-b--push--t1of1{margin-left:100%}.g-b--push--t1of2,.g-b--push--t2of4,.g-b--push--t3of6,.g-b--push--t4of8,.g-b--push--t5of10,.g-b--push--t6of12{margin-left:50%}.g-b--push--t1of3,.g-b--push--t2of6,.g-b--push--t4of12{margin-left:33.333%}.g-b--push--t2of3,.g-b--push--t4of6,.g-b--push--t8of12{margin-left:66.666%}.g-b--push--t1of4,.g-b--push--t2of8,.g-b--push--t3of12{margin-left:25%}.g-b--push--t3of4,.g-b--push--t6of8,.g-b--push--t9of12{margin-left:75%}.g-b--push--t1of5,.g-b--push--t2of10{margin-left:20%}.g-b--push--t2of5,.g-b--push--t4of10{margin-left:40%}.g-b--push--t3of5,.g-b--push--t6of10{margin-left:60%}.g-b--push--t4of5,.g-b--push--t8of10{margin-left:80%}.g-b--push--t1of6,.g-b--push--t2of12{margin-left:16.666%}.g-b--push--t5of6,.g-b--push--t10of12{margin-left:83.333%}.g-b--push--t1of8{margin-left:12.5%}.g-b--push--t3of8{margin-left:37.5%}.g-b--push--t5of8{margin-left:62.5%}.g-b--push--t7of8{margin-left:87.5%}.g-b--push--t1of10{margin-left:10%}.g-b--push--t3of10{margin-left:30%}.g-b--push--t7of10{margin-left:70%}.g-b--push--t9of10{margin-left:90%}.g-b--push--t1of12{margin-left:8.333%}.g-b--push--t5of12{margin-left:41.666%}.g-b--push--t7of12{margin-left:58.333%}.g-b--push--t11of12{margin-left:91.666%}.g-b--pull--t1of1{margin-right:100%}.g-b--pull--t1of2,.g-b--pull--t2of4,.g-b--pull--t3of6,.g-b--pull--t4of8,.g-b--pull--t5of10,.g-b--pull--t6of12{margin-right:50%}.g-b--pull--t1of3,.g-b--pull--t2of6,.g-b--pull--t4of12{margin-right:33.333%}.g-b--pull--t2of3,.g-b--pull--t4of6,.g-b--pull--t8of12{margin-right:66.666%}.g-b--pull--t1of4,.g-b--pull--t2of8,.g-b--pull--t3of12{margin-right:25%}.g-b--pull--t3of4,.g-b--pull--t6of8,.g-b--pull--t9of12{margin-right:75%}.g-b--pull--t1of5,.g-b--pull--t2of10{margin-right:20%}.g-b--pull--t2of5,.g-b--pull--t4of10{margin-right:40%}.g-b--pull--t3of5,.g-b--pull--t6of10{margin-right:60%}.g-b--pull--t4of5,.g-b--pull--t8of10{margin-right:80%}.g-b--pull--t1of6,.g-b--pull--t2of12{margin-right:16.666%}.g-b--pull--t5of6,.g-b--pull--t10of12{margin-right:83.333%}.g-b--pull--t1of8{margin-right:12.5%}.g-b--pull--t3of8{margin-right:37.5%}.g-b--pull--t5of8{margin-right:62.5%}.g-b--pull--t7of8{margin-right:87.5%}.g-b--pull--t1of10{margin-right:10%}.g-b--pull--t3of10{margin-right:30%}.g-b--pull--t7of10{margin-right:70%}.g-b--pull--t9of10{margin-right:90%}.g-b--pull--t1of12{margin-right:8.333%}.g-b--pull--t5of12{margin-right:41.666%}.g-b--pull--t7of12{margin-right:58.333%}.g-b--pull--t11of12{margin-right:91.666%}}@media screen and (min-width:62.5em){.g-b--d1of1{width:100%}.g-b--d1of2,.g-b--d2of4,.g-b--d3of6,.g-b--d4of8,.g-b--d5of10,.g-b--d6of12{width:50%}.g-b--d1of3,.g-b--d2of6,.g-b--d4of12{width:33.333%}.g-b--d2of3,.g-b--d4of6,.g-b--d8of12{width:66.666%}.g-b--d1of4,.g-b--d2of8,.g-b--d3of12{width:25%}.g-b--d3of4,.g-b--d6of8,.g-b--d9of12{width:75%}.g-b--d1of5,.g-b--d2of10{width:20%}.g-b--d2of5,.g-b--d4of10{width:40%}.g-b--d3of5,.g-b--d6of10{width:60%}.g-b--d4of5,.g-b--d8of10{width:80%}.g-b--d1of6,.g-b--d2of12{width:16.666%}.g-b--d5of6,.g-b--d10of12{width:83.333%}.g-b--d1of8{width:12.5%}.g-b--d3of8{width:37.5%}.g-b--d5of8{width:62.5%}.g-b--d7of8{width:87.5%}.g-b--d1of10{width:10%}.g-b--d3of10{width:30%}.g-b--d7of10{width:70%}.g-b--d9of10{width:90%}.g-b--d1of12{width:8.333%}.g-b--d5of12{width:41.666%}.g-b--d7of12{width:58.333%}.g-b--d11of12{width:91.666%}.g-b--push--d1of1{margin-left:100%}.g-b--push--d1of2,.g-b--push--d2of4,.g-b--push--d3of6,.g-b--push--d4of8,.g-b--push--d5of10,.g-b--push--d6of12{margin-left:50%}.g-b--push--d1of3,.g-b--push--d2of6,.g-b--push--d4of12{margin-left:33.333%}.g-b--push--d2of3,.g-b--push--d4of6,.g-b--push--d8of12{margin-left:66.666%}.g-b--push--d1of4,.g-b--push--d2of8,.g-b--push--d3of12{margin-left:25%}.g-b--push--d3of4,.g-b--push--d6of8,.g-b--push--d9of12{margin-left:75%}.g-b--push--d1of5,.g-b--push--d2of10{margin-left:20%}.g-b--push--d2of5,.g-b--push--d4of10{margin-left:40%}.g-b--push--d3of5,.g-b--push--d6of10{margin-left:60%}.g-b--push--d4of5,.g-b--push--d8of10{margin-left:80%}.g-b--push--d1of6,.g-b--push--d2of12{margin-left:16.666%}.g-b--push--d5of6,.g-b--push--d10of12{margin-left:83.333%}.g-b--push--d1of8{margin-left:12.5%}.g-b--push--d3of8{margin-left:37.5%}.g-b--push--d5of8{margin-left:62.5%}.g-b--push--d7of8{margin-left:87.5%}.g-b--push--d1of10{margin-left:10%}.g-b--push--d3of10{margin-left:30%}.g-b--push--d7of10{margin-left:70%}.g-b--push--d9of10{margin-left:90%}.g-b--push--d1of12{margin-left:8.333%}.g-b--push--d5of12{margin-left:41.666%}.g-b--push--d7of12{margin-left:58.333%}.g-b--push--d11of12{margin-left:91.666%}.g-b--pull--d1of1{margin-right:100%}.g-b--pull--d1of2,.g-b--pull--d2of4,.g-b--pull--d3of6,.g-b--pull--d4of8,.g-b--pull--d5of10,.g-b--pull--d6of12{margin-right:50%}.g-b--pull--d1of3,.g-b--pull--d2of6,.g-b--pull--d4of12{margin-right:33.333%}.g-b--pull--d2of3,.g-b--pull--d4of6,.g-b--pull--d8of12{margin-right:66.666%}.g-b--pull--d1of4,.g-b--pull--d2of8,.g-b--pull--d3of12{margin-right:25%}.g-b--pull--d3of4,.g-b--pull--d6of8,.g-b--pull--d9of12{margin-right:75%}.g-b--pull--d1of5,.g-b--pull--d2of10{margin-right:20%}.g-b--pull--d2of5,.g-b--pull--d4of10{margin-right:40%}.g-b--pull--d3of5,.g-b--pull--d6of10{margin-right:60%}.g-b--pull--d4of5,.g-b--pull--d8of10{margin-right:80%}.g-b--pull--d1of6,.g-b--pull--d2of12{margin-right:16.666%}.g-b--pull--d5of6,.g-b--pull--d10of12{margin-right:83.333%}.g-b--pull--d1of8{margin-right:12.5%}.g-b--pull--d3of8{margin-right:37.5%}.g-b--pull--d5of8{margin-right:62.5%}.g-b--pull--d7of8{margin-right:87.5%}.g-b--pull--d1of10{margin-right:10%}.g-b--pull--d3of10{margin-right:30%}.g-b--pull--d7of10{margin-right:70%}.g-b--pull--d9of10{margin-right:90%}.g-b--pull--d1of12{margin-right:8.333%}.g-b--pull--d5of12{margin-right:41.666%}.g-b--pull--d7of12{margin-right:58.333%}.g-b--pull--d11of12{margin-right:91.666%}}.splashscreen{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#373D49;z-index:22}.splashscreen-dillinger{width:260px;height:auto;display:block;margin:0 auto;padding-bottom:3rem}@media screen and (min-width:46.25em){.splashscreen-dillinger{width:500px}}@media screen and (min-width:62.5em){.splashscreen-dillinger{width:700px}}@media screen and (min-width:87.5em){.splashscreen-dillinger{width:800px}}.splashscreen p{font-size:1.25rem;padding-top:.56251rem;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;text-align:center;max-width:500px;margin:0 auto;color:#FFF}@media screen and (min-width:27.5em){.splashscreen p{font-size:1.25rem;margin-bottom:1.43749rem;padding-top:.56251rem}}@media screen and (min-width:46.25em){.splashscreen p{font-size:1.25rem;margin-bottom:1.43749rem;padding-top:.56251rem}}@media screen and (min-width:62.5em){.splashscreen p{font-size:1.25rem;margin-bottom:1.43749rem;padding-top:.56251rem}}@media screen and (min-width:87.5em){.splashscreen p{font-size:1.25rem;margin-bottom:1.43749rem;padding-top:.56251rem}}.sp-center{position:relative;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);top:50%}.open-menu>.wrapper{overflow-x:hidden}.page{margin:0 auto;position:relative;top:0;left:0;width:100%;height:100%;z-index:2;-webkit-transition:all .25s ease-in-out;transition:all .25s ease-in-out;background-color:#fff;padding-top:51px;will-change:left}.open-menu .page{left:270px}.title{line-height:1rem;font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem;font-weight:500;color:#A0AABF;letter-spacing:1px;text-transform:uppercase;padding-left:16px;padding-right:16px;margin-top:1rem}@media screen and (min-width:27.5em){.title{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:46.25em){.title{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:62.5em){.title{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:87.5em){.title{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}.split-preview .title{padding-left:0}.title-document{line-height:1rem;font-size:1.25rem;margin-bottom:.89999rem;padding-top:.10001rem;font-weight:400;font-family:"Ubuntu Mono",Monaco;color:#373D49;padding-left:16px;padding-right:16px;width:80%;min-width:300px;outline:0;border:none}@media screen and (min-width:27.5em){.title-document{font-size:1.25rem;margin-bottom:.89999rem;padding-top:.10001rem}}@media screen and (min-width:46.25em){.title-document{font-size:1.25rem;margin-bottom:.89999rem;padding-top:.10001rem}}@media screen and (min-width:62.5em){.title-document{font-size:1.25rem;margin-bottom:.89999rem;padding-top:.10001rem}}@media screen and (min-width:87.5em){.title-document{font-size:1.25rem;margin-bottom:.89999rem;padding-top:.10001rem}}.icon{display:block;margin:0 auto;width:36px;height:36px;border-radius:3px;text-align:center}.icon svg{display:inline-block;margin-left:auto;margin-right:auto}.icon-preview{background-color:#373D49;line-height:40px}.icon-preview svg{width:19px;height:12px}.icon-settings{background-color:#373D49;line-height:44px}.icon-settings svg{width:18px;height:18px}.icon-link{width:16px;height:16px;line-height:1;margin-right:24px;text-align:right}.navbar{background-color:#373D49;height:51px;width:100%;position:fixed;top:0;left:0;z-index:6;-webkit-transition:all .25s ease-in-out;transition:all .25s ease-in-out;will-change:left}.navbar:after{content:"";display:table;clear:both}.open-menu .navbar{left:270px}.navbar-brand{float:left;margin:0 0 0 24px;padding:0;line-height:42px}.navbar-brand svg{width:85px;height:11px}.nav-left{float:left}.nav-right{float:right}.nav-sidebar{width:100%}.menu{list-style:none;margin:0;padding:0}.menu a{border:0;color:#A0AABF;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;outline:none;text-transform:uppercase}.menu a:hover{color:#35D7BB}.menu .menu-item{border:0;display:none;float:left;margin:0;position:relative}.menu .menu-item>a{display:block;font-size:12px;height:51px;letter-spacing:1px;line-height:51px;padding:0 24px}.menu .menu-item--settings,.menu .menu-item--preview,.menu .menu-item--save-to.in-sidebar,.menu .menu-item--import-from.in-sidebar,.menu .menu-item--link-unlink.in-sidebar,.menu .menu-item--documents.in-sidebar{display:block}.menu .menu-item--documents{padding-bottom:1rem}@media screen and (min-width:46.25em){.menu .menu-item--save-to,.menu .menu-item--import-from{display:block}.menu .menu-item--preview,.menu .menu-item--save-to.in-sidebar,.menu .menu-item--import-from.in-sidebar{display:none}}@media screen and (min-width:62.5em){.menu .menu-item--export-as{display:block}.menu .menu-item--preview{display:none}}.menu .menu-item.open>a{background-color:#1D212A}.menu .menu-item-icon>a{height:auto;padding:0}.menu .menu-item-icon:hover>a{background-color:transparent}.menu .menu-link.open i{background-color:#1D212A}.menu .menu-link.open g{fill:#35D7BB}.menu .menu-link-preview,.menu .menu-link-settings{margin-top:8px;width:51px}.menu-sidebar{width:100%}.menu-sidebar .menu-item{float:none;margin-bottom:1px;width:100%}.menu-sidebar .menu-item.open>a{background-color:#373D49}.menu-sidebar .open .caret{-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.menu-sidebar>.menu-item:hover .dropdown a,.menu-sidebar>.menu-item:hover .dropdown .settings{background-color:transparent}.menu-sidebar .menu-link{background-color:#373D49;font-weight:600}.menu-sidebar .menu-link:after{content:"";display:table;clear:both}.menu-sidebar .menu-link>span{float:left}.menu-sidebar .menu-link>.caret{float:right;text-align:right;top:22px}.menu-sidebar .dropdown,.menu-sidebar .settings{background-color:transparent;position:static;width:100%}.dropdown{position:absolute;right:0;top:51px;width:188px}.dropdown,.settings{display:none;background-color:#1D212A}.dropdown{padding:0}.dropdown,.settings,.sidebar-list{list-style:none;margin:0}.sidebar-list{padding:0}.dropdown li,.dropdown .settings,.sidebar-list li{line-height:1;margin:32px 0;padding:0 0 0 32px}.dropdown a,.dropdown .settings,.sidebar-list a{color:#D0D6E2;display:block;text-transform:none}.dropdown a:after,.dropdown .settings,.sidebar-list a:after{content:"";display:table;clear:both}.dropdown .icon,.dropdown .settings,.sidebar-list .icon{float:right}.open .dropdown,.open .settings,.open .sidebar-list{display:block}.open .dropdown.collapse,.open .collapse.settings,.open .sidebar-list.collapse{display:none}.open .dropdown.collapse.in,.open .collapse.in.settings,.open .sidebar-list.collapse.in{display:block}.dropdown .unlinked .icon,.dropdown .unlinked .settings,.sidebar-list .unlinked .icon{opacity:.3}.dropdown.documents li,.dropdown.documents .documents.settings,.sidebar-list.documents li{background-image:url('../img/icons/file.svg');background-position:240px center;background-repeat:no-repeat;background-size:14px 16px;padding:3px 32px}.dropdown.documents li.octocat,.dropdown.documents .documents.settings,.sidebar-list.documents li.octocat{background-image:url('../img/icons/octocat.svg');background-position:234px center;background-size:24px 24px}.dropdown.documents li:last-child,.dropdown.documents .documents.settings,.sidebar-list.documents li:last-child{margin-bottom:1rem}.dropdown.documents li.active a,.dropdown.documents li.active .documents.settings,.sidebar-list.documents li.active a{color:#35D7BB}.settings{position:fixed;top:67px;right:16px;border-radius:3px;width:288px;background-color:#373D49;padding:16px;z-index:7}.show-settings .settings{display:block}.settings .has-checkbox{float:left}.settings a{font-size:1.25rem;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;line-height:28px;color:#D0D6E2}.settings a:after{content:"";display:table;clear:both}@media screen and (min-width:27.5em){.settings a{font-size:1.25rem}}@media screen and (min-width:46.25em){.settings a{font-size:1.25rem}}@media screen and (min-width:62.5em){.settings a{font-size:1.25rem}}@media screen and (min-width:87.5em){.settings a{font-size:1.25rem}}.settings a:hover{color:#35D7BB}.settings li{border-bottom:1px solid #4F535B;margin:0;padding:16px 0}.settings li:last-child{border-bottom:none}.brand{border:none;display:block}.brand:hover g{fill:#35D7BB}.toggle{display:block;float:left;height:16px;padding:25px 16px 26px;width:40px}.toggle span:after,.toggle span:before{content:'';left:0;position:absolute;top:-6px}.toggle span:after{top:6px}.toggle span{display:block;position:relative}.toggle span,.toggle span:after,.toggle span:before{-webkit-backface-visibility:hidden;backface-visibility:hidden;background-color:#D3DAEA;height:2px;-webkit-transition:all .3s;transition:all .3s;width:20px}.open-menu .toggle span{background-color:transparent}.open-menu .toggle span:before{-webkit-transform:rotate(45deg)translate(3px,3px);-ms-transform:rotate(45deg)translate(3px,3px);transform:rotate(45deg)translate(3px,3px)}.open-menu .toggle span:after{-webkit-transform:rotate(-45deg)translate(5px,-6px);-ms-transform:rotate(-45deg)translate(5px,-6px);transform:rotate(-45deg)translate(5px,-6px)}.caret{display:inline-block;width:0;height:0;margin-left:6px;vertical-align:middle;position:relative;top:-1px;border-top:4px solid;border-right:4px solid transparent;border-left:4px solid transparent}.sidebar{overflow:auto;height:100%;padding-right:15px;padding-bottom:15px;width:285px}.sidebar-wrapper{-webkit-overflow-scrolling:touch;background-color:#2B2F36;left:0;height:100%;overflow-y:hidden;position:fixed;top:0;width:285px;z-index:1}.sidebar-branding{width:160px;padding:0;margin:16px auto}.header{border-bottom:1px solid #E8E8E8;position:relative}.words{line-height:1rem;font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem;font-weight:500;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;color:#A0AABF;letter-spacing:1px;text-transform:uppercase;z-index:5;position:absolute;right:16px;top:0}@media screen and (min-width:27.5em){.words{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:46.25em){.words{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:62.5em){.words{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}@media screen and (min-width:87.5em){.words{font-size:.8rem;margin-bottom:.77999rem;padding-top:.22001rem}}.words span{color:#000}.btn{text-align:center;display:inline-block;width:100%;text-transform:uppercase;font-weight:600;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;text-shadow:0 1px 0 #1b8b76;padding:16px 24px;background-color:#35D7BB;border-radius:3px;margin:0 auto 16px;line-height:1;color:#fff;-webkit-transition:all .15s linear;transition:all .15s linear;-webkit-font-smoothing:antialiased}.btn--new,.btn--save{display:block;width:238px}.btn--new:hover,.btn--new:focus,.btn--save:hover,.btn--save:focus{color:#fff;border-bottom-color:transparent;box-shadow:0 1px 3px #24b59b;text-shadow:0 1px 0 #24b59b}.btn--save{background-color:#4A5261;text-shadow:0 1px 1px #1e2127}.btn--save:hover,.btn--save:focus{color:#fff;border-bottom-color:transparent;box-shadow:0 1px 5px #08090a;text-shadow:none}.btn--delete{display:block;width:238px;background-color:transparent;font-size:12px;text-shadow:none}.btn--delete:hover,.btn--delete:focus{color:#fff;border-bottom-color:transparent;text-shadow:0 1px 0 #08090a;opacity:.8}.btn--ok,.btn--close{border-top:0;background-color:#4A5261;text-shadow:0 1px 0 #08090a;margin:0}.btn--ok:hover,.btn--ok:focus,.btn--close:hover,.btn--close:focus{color:#fff;background-color:#292d36;text-shadow:none}.overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(55,61,73,.8);-webkit-transition:all .25s ease-in-out;transition:all .25s ease-in-out;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;will-change:left,opacity,visibility;z-index:5;opacity:0;visibility:hidden}.show-settings .overlay{visibility:visible;opacity:1}.switch{float:right;line-height:1}.switch input{display:none}.switch small{display:inline-block;cursor:pointer;padding:0 24px 0 0;-webkit-transition:all ease .2s;transition:all ease .2s;background-color:#2B2F36;border-color:#2B2F36}.switch small,.switch small:before{border-radius:30px;box-shadow:inset 0 0 2px 0 #14171F}.switch small:before{display:block;content:'';width:28px;height:28px;background:#fff}.switch.checked small{padding-right:0;padding-left:24px;background-color:#35D7BB;box-shadow:none}.modal--dillinger.about .modal-dialog{font-size:1.25rem;max-width:500px}@media screen and (min-width:27.5em){.modal--dillinger.about .modal-dialog{font-size:1.25rem}}@media screen and (min-width:46.25em){.modal--dillinger.about .modal-dialog{font-size:1.25rem}}@media screen and (min-width:62.5em){.modal--dillinger.about .modal-dialog{font-size:1.25rem}}@media screen and (min-width:87.5em){.modal--dillinger.about .modal-dialog{font-size:1.25rem}}.modal--dillinger .modal-dialog{max-width:600px;width:auto;margin:5rem auto}.modal--dillinger .modal-content{background:#373D49;border-radius:3px;box-shadow:0 2px 5px 0 #2C3B59;color:#fff;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;padding:2rem}.modal--dillinger ul{list-style-type:disc;margin:1rem 0;padding:0 0 0 1rem}.modal--dillinger li{padding:0;margin:0}.modal--dillinger .modal-header{border:0;padding:0}.modal--dillinger .modal-body{padding:0}.modal--dillinger .modal-footer{border:0;padding:0}.modal--dillinger .close{color:#fff;opacity:1}.modal-backdrop{background-color:#373D49}.pagination--dillinger{padding:0!important;margin:1.5rem 0!important;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-align-content:stretch;-ms-flex-line-pack:stretch;align-content:stretch}.pagination--dillinger,.pagination--dillinger li{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.pagination--dillinger li{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.pagination--dillinger li:first-child>a,.pagination--dillinger li.disabled>a,.pagination--dillinger li.disabled>a:hover,.pagination--dillinger li.disabled>a:focus,.pagination--dillinger li>a{background-color:transparent;border-color:#4F535B;border-right-color:transparent}.pagination--dillinger li.active>a,.pagination--dillinger li.active>a:hover,.pagination--dillinger li.active>a:focus{border-color:#4A5261;background-color:#4A5261;color:#fff}.pagination--dillinger li>a{float:none;color:#fff;width:100%;display:block;text-align:center;margin:0;border-right-color:transparent;padding:6px}.pagination--dillinger li>a:hover,.pagination--dillinger li>a:focus{border-color:#35D7BB;background-color:#35D7BB;color:#fff}.pagination--dillinger li:last-child a{border-color:#4F535B}.pagination--dillinger li:first-child a{border-right-color:transparent}.diNotify{position:absolute;z-index:9999;left:0;right:0;top:0;margin:0 auto;max-width:400px;text-align:center;-webkit-transition:top .5s ease-in-out,opacity .5s ease-in-out;transition:top .5s ease-in-out,opacity .5s ease-in-out;visibility:hidden}.diNotify-body{-webkit-font-smoothing:antialiased;background-color:#35D7BB;background:#666E7F;border-radius:3px;color:#fff;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;overflow:hidden;padding:1rem 2rem .5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:baseline;-webkit-align-items:baseline;-ms-flex-align:baseline;align-items:baseline;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}.diNotify-icon{display:block;width:16px;height:16px;line-height:16px;position:relative;top:3px}.diNotify-message{padding-left:1rem}.zen-wrapper{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:10;background-color:#FFF;opacity:0;-webkit-transition:opacity .25s ease-in-out;transition:opacity .25s ease-in-out}.zen-wrapper.on{opacity:1}.enter-zen-mode{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;background-image:url('../img/icons/enter-zen.svg');background-repeat:no-repeat;width:32px;height:32px;display:block;position:absolute;right:.5rem;top:.5rem;display:none}@media screen and (min-width:46.25em){.enter-zen-mode{display:block}}.close-zen-mode{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;background-image:url('../img/icons/exit-zen.svg');background-repeat:no-repeat;width:32px;height:32px;display:block;position:absolute;right:1rem;top:1rem}@media screen and (min-width:46.25em){.close-zen-mode{right:3rem;top:3rem}}.zen-page{position:relative;top:0;bottom:0;z-index:11;height:100%;width:100%}#zen{font-size:1.25rem;width:300px;height:80%;margin:0 auto;position:relative;top:10%}@media screen and (min-width:27.5em){#zen{font-size:1.25rem}}@media screen and (min-width:46.25em){#zen{font-size:1.25rem}}@media screen and (min-width:62.5em){#zen{font-size:1.25rem}}@media screen and (min-width:87.5em){#zen{font-size:1.25rem}}@media screen and (min-width:27.5em){#zen{width:400px}}@media screen and (min-width:46.25em){#zen{width:500px}}@media screen and (min-width:62.5em){#zen{width:700px}}#zen:before,#zen:after{content:"";position:absolute;height:10%;width:100%;z-index:12;pointer-events:none}#zen:after{background-image:-webkit-linear-gradient(270deg,rgba(255,255,255,0)0%,#fff 100%);background-image:linear-gradient(-180deg,rgba(255,255,255,0)0%,#fff 100%);bottom:0}.split{overflow:scroll;padding:0!important}.split-editor{padding-left:0;padding-right:0;position:relative}.show-preview .split-editor{display:none}@media screen and (min-width:46.25em){.split-editor{border-right:1px solid #E8E8E8;float:left;height:calc(100vh - 130px);-webkit-overflow-scrolling:touch;padding-right:16px;width:50%}.show-preview .split-editor{display:block}}.split-preview{background-color:#fff;display:none;position:absolute;top:129px;z-index:4}.show-preview .split-preview{display:block}@media screen and (min-width:46.25em){.split-preview{display:block;float:right;height:calc(100vh - 130px);-webkit-overflow-scrolling:touch;position:static;top:0;width:50%}}#editor{font-size:1rem;font-family:"Ubuntu Mono",Monaco;font-weight:400;line-height:2rem;width:100%;height:100%}@media screen and (min-width:27.5em){#editor{font-size:1rem}}@media screen and (min-width:46.25em){#editor{font-size:1rem}}@media screen and (min-width:62.5em){#editor{font-size:1rem}}@media screen and (min-width:87.5em){#editor{font-size:1rem}}#editor .ace_gutter{-webkit-font-smoothing:antialiased}#preview a{color:#A0AABF;text-decoration:underline}.sr-only{visibility:hidden;text-overflow:110%;overflow:hidden;top:-100px;position:absolute}.mnone{margin:0!important}</style></head><body>
+<h1 id="-iot-">「IoTに基づくスマートホームシステムの設計と実装」のあらまし</h1>
+<h2 id="-">はじめに</h2>
 <p>本論文は、スマートホームシステムのフレームワークの構築への検討である。</p>
 <p>本システムは、ユビキタスセンシングネットワーク、データーベース、中央コントロールシステムとリモコン端末からなっている。このシステムは、居場所の環境要素を検出し情報源として家屋にある家電用品を遠隔操作できるものである。本研究に通して、スマートホームシステムの構築方法を検討しIoTの要素を理解し更に発展することを目的とする。</p>
-<hr />
-<h2>システムデザイン</h2>
+<hr>
+<h2 id="-">システムデザイン</h2>
 <p>普通には、スマートホームに対して、温度、湿度、照度が基本的な環境要素であって、インテリジェントカーテンも基本的なインテリジェント家電用品である。それらを例に考えて以下のようになる。</p>
-<p><img src="http://izumisagiri.github.io/system.png" alt="system" title="システムデザイン" /></p>
-<hr />
-<h2>ハードウェアとソフトウェアの選定</h2>
-<h3>温度センサー</h3>
+<p><img src="http://izumisagiri.github.io/system.png" alt="system" title="システムデザイン"></p>
+<hr>
+<h2 id="-">ハードウェアとソフトウェアの選定</h2>
+<h3 id="-">温度センサー</h3>
 <p>DS18B20を選定する。測定温度範囲は-55℃～+125℃で、精度は±0.5℃であって、1-Wireバス上で通信を行う。電源動作範囲は3.0V～5.5Vである。</p>
-<h3>湿度センサー</h3>
+<h3 id="-">湿度センサー</h3>
 <p>AM2001を選定する。電源動作範囲は4.5V～6Vである。精度は±3%RHである。アナログセンサである。</p>
-<h3>A/D&amp;D/Aコンバータチップ</h3>
+<h3 id="a-d-d-a-">A/D&amp;D/Aコンバータチップ</h3>
 <p>PCF8591を選定する。電源動作範囲は2.5V～6Vである。I2Cインターフェース上で通信を行う。</p>
-<h3>マイコン</h3>
+<h3 id="-">マイコン</h3>
 <p>最も基本的なマイコンSTC89C52RCを選定する。C言語を使ってプログラミングする。</p>
-<h3>中央コントローラー</h3>
+<h3 id="-">中央コントローラー</h3>
 <p>誰も持っているパソコンを選定する。</p>
-<h3>近距離無線通信モジュール</h3>
+<h3 id="-">近距離無線通信モジュール</h3>
 <p>現在、ユビキタスネットワークのプロトコールにはRFやBluetooth、WiFi、Zigbee、Z-Waveがある。WiFiが省エネではなく、Bluetoothの通信距離がただ10ｍであり、ZigbeeとZ-Waveが複雑なユビキタスネットワーク向けプロトコールであると考えていてRFを選定する。ノルディック社のnRF24L01は2.4GHz帯を使って通信を行っている。この2.4GHz帯は免許不要で自由に利用できる。</p>
-<h3>中央コントロールソフトウェアの開発の言語</h3>
+<h3 id="-">中央コントロールソフトウェアの開発の言語</h3>
 <p>データーベースを使う必要及びリモコン端末が使える希望があるので、C#+SQLSERVER+ASP.NETを選定する。C#はオブジェクト指向言語であり、SQLSERVER及びASP.NETと繋ぎやすい。</p>
-<h3>サーバーの構築手法</h3>
+<h3 id="-">サーバーの構築手法</h3>
 <p>パソコンでIISをインストールしてnat123が提供した無料ドメインを取得してサーバーを構築する。</p>
-<hr />
-<h2>温度及び湿度を検出するプログラムの開発</h2>
-<h3>温度を検出するプログラム</h3>
+<hr>
+<h2 id="-">温度及び湿度を検出するプログラムの開発</h2>
+<h3 id="-">温度を検出するプログラム</h3>
 <p>DS18B20の初期化</p>
-<p><img src="http://izumisagiri.github.io/initiate.png" alt="initiate" title="初期化" />;</p>
+<p><img src="http://izumisagiri.github.io/initiate.png" alt="initiate" title="初期化">;</p>
 <p>初期化プログラムは以下のようになる。</p>
 <pre><code>void DS18B20_Reset(void)
 {
@@ -36,17 +37,16 @@
 
     DS_Data = 0;
     i = 103;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 
     DS_Data = 1;
     i = 4;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 }
-</code></pre>
-<p>DS18B20の入力と出力</p>
-<p><img src="http://izumisagiri.github.io/0and1.png" alt="0and1" title="入力と出力" />;</p>
+</code></pre><p>DS18B20の入力と出力</p>
+<p><img src="http://izumisagiri.github.io/0and1.png" alt="0and1" title="入力と出力">;</p>
 <p>入力と出力プログラムは以下のようになる。</p>
-<pre><code>bit DS18B20_ReadBit(void)                       //1bitを読み込む
+<pre><code>bit DS18B20_ReadBit(void)                                //1bitを読み込む
 {
     unsigned int i;
     bit dat;
@@ -59,14 +59,14 @@
     dat = DS_Data;
 
     i = 8;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 
     return (dat);
 }
-uchar DS18B20_ReadByte(void)                        //1Byteを読み込む
+uchar DS18B20_ReadByte(void)                            //1Byteを読み込む
 {
     unsigned char i,j,dat;
-    
+
     dat=0;
     for(i=1; i&lt;=8; i++)
     {
@@ -76,7 +76,7 @@ uchar DS18B20_ReadByte(void)                        //1Byteを読み込む
 
     return(dat);
 }
-void DS18B20_WriteByte(unsigned char dat)               //1Byteを書き込む
+void DS18B20_WriteByte(unsigned char dat)                //1Byteを書き込む
 {
     unsigned int i;
     unsigned char j, k;
@@ -88,7 +88,7 @@ void DS18B20_WriteByte(unsigned char dat)               //1Byteを書き込む
     {
         b = k &amp; 0x01;
         k = k &gt;&gt; 1;
-        if(b)                           //1を書き込む
+        if(b)                                             //1を書き込む
         {
             DS_Data = 0;
             i++; i++;
@@ -98,47 +98,45 @@ void DS18B20_WriteByte(unsigned char dat)               //1Byteを書き込む
         }
         else
         {
-            DS_Data = 0;                    //0を書き込む
+            DS_Data = 0;                                   //0を書き込む
             i = 8;
-            while(i&gt;0)  i--;
+            while(i&gt;0)    i--;
             DS_Data = 1;
             i++; i++;
         }
-    
+
     }
 }
-</code></pre>
-<p>温度を検出するプログラムは以下のようになる。</p>
-<pre><code>void DS18B20_Change(void)                       //DS18B20を始動する
+</code></pre><p>温度を検出するプログラムは以下のようになる。</p>
+<pre><code>void DS18B20_Change(void)                                //DS18B20を始動する
 {
-    DS18B20_Reset();                        //初期化
+    DS18B20_Reset();                                    //初期化
     delayDSMs(5);
-    DS18B20_WriteByte(0xcc);                    //DS18B20は一つだけであるから、ROMを使わない
-    DS18B20_WriteByte(0x44);                    //温度検出を始める
+    DS18B20_WriteByte(0xcc);                              //DS18B20は一つだけであるから、ROMを使わない
+    DS18B20_WriteByte(0x44);                              //温度検出を始める
 }
-int DS18B20_GetTemp()                           //温度検出の結果を読み込む
+int DS18B20_GetTemp()                                    //温度検出の結果を読み込む
 {
     float t;
     unsigned char a, b;
     int temp;
-    
-    DS18B20_Reset();                        //初期化
+
+    DS18B20_Reset();                                    //初期化
     delayDSMs(5);
-    DS18B20_WriteByte(0xcc);                        //ROMを使わない
-    DS18B20_WriteByte(0xbe);                        //結果を読み込む
+    DS18B20_WriteByte(0xcc);                            //ROMを使わない
+    DS18B20_WriteByte(0xbe);                            //結果を読み込む
     a=DS18B20_ReadByte();
     b=DS18B20_ReadByte();
-    
+
     temp = b;
     temp &lt;&lt;= 8;
-    temp = temp|a;                          //データの高位と低位を合成する
-    t = temp*0.0625;                        //デフォルト精度は12ビットであり，即ち0.0625℃である
+    temp = temp|a;                                        //データの高位と低位を合成する
+    t = temp*0.0625;                                    //デフォルト精度は12ビットであり，即ち0.0625℃である
     temp = t*10+0.5;
-    
+
     return temp;
 }
-</code></pre>
-<h3>湿度を検出するプログラム</h3>
+</code></pre><h3 id="-">湿度を検出するプログラム</h3>
 <p>湿度センサはアナログセンサであるのでA/D&amp;D/Aコンバータチップを動かすプログラムが必要になる。
 PCF8591の初期化
 I2Cを初期化するのはSDA及びSCLをHighにすること。プログラムは以下のようになる。</p>
@@ -149,9 +147,8 @@ I2Cを初期化するのはSDA及びSCLをHighにすること。プログラム�
     SCL=1;
     delayADDA();
 }
-</code></pre>
-<p>I2Cの読み込み開始及び終止のプログラム</p>
-<p><img src="http://izumisagiri.github.io/I2C.png" alt="I2C" /></p>
+</code></pre><p>I2Cの読み込み開始及び終止のプログラム</p>
+<p><img src="http://izumisagiri.github.io/I2C.png" alt="I2C"></p>
 <pre><code>void start()
 {
     SDA=1;
@@ -170,9 +167,8 @@ void stop()
     SDA=1;
     delayADDA();
 }
-</code></pre>
-<p>I2Cのデータコミュニケーション</p>
-<p><img src="http://izumisagiri.github.io/I2Cwrite.png" alt="I2C" /></p>
+</code></pre><p>I2Cのデータコミュニケーション</p>
+<p><img src="http://izumisagiri.github.io/I2Cwrite.png" alt="I2C"></p>
 <pre><code>void Write_Byte(uchar dat)
 {
     uchar i;
@@ -218,10 +214,9 @@ uchar Read_Byte()
     }
     return dat;
 }
-</code></pre>
-<h3>acknowledge及びnot acknowledge</h3>
+</code></pre><h3 id="acknowledge-not-acknowledge">acknowledge及びnot acknowledge</h3>
 <p>SCLのクロックに従って送信側から８ビットのデータが出力され、続いて受信側からアクノリッジ信号が返送される。</p>
-<p><img src="http://izumisagiri.github.io/I2Cack.png" alt="ACK" title="ACK" /></p>
+<p><img src="http://izumisagiri.github.io/I2Cack.png" alt="ACK" title="ACK"></p>
 <pre><code>void ack()
 {
     uchar i=0;
@@ -240,8 +235,7 @@ void noack()
     SCL=0;
     delayADDA();
 }
-</code></pre>
-<h3>I2Cメインプログラム</h3>
+</code></pre><h3 id="i2c-">I2Cメインプログラム</h3>
 <pre><code>void DAC_PCF8591(uchar add,uchar dat)
 {
     start();                          
@@ -268,80 +262,66 @@ uchar ADC_Read(uchar add0,uchar add1,uchar chl)
     noack();
     stop();
     return dat;
-} 
-</code></pre>
-<hr />
-<h2>インテリジェントカーテンの設計</h2>
+}
+</code></pre><hr>
+<h2 id="-">インテリジェントカーテンの設計</h2>
 <p>モーターでカーテンを動かして、光電スイッチでカーテンの状態を検出する。直流モーターを使って、PWM制御でモーターの速度を変調する。</p>
-<h3>電子回路</h3>
+<h3 id="-">電子回路</h3>
 <p>設計した回路は以下のようになる。</p>
 <p>電源のレギュレーション</p>
-<p><img src="http://izumisagiri.github.io/wenya.png" alt="voltage" /></p>
+<p><img src="http://izumisagiri.github.io/wenya.png" alt="voltage"></p>
 <p>駆動回路</p>
-<p><img src="http://izumisagiri.github.io/gongfang.png" alt="amplifier" /></p>
+<p><img src="http://izumisagiri.github.io/gongfang.png" alt="amplifier"></p>
 <p>PWM制御プログラム</p>
 <pre><code>void PWM(int a){int i;for(i=0;i&lt;10;i++){if(i&lt;a)OUT=1;else OUT=0;}}
-</code></pre>
-<p>モータの正逆転制御回路「Hブリッジ回路」</p>
-<p><img src="http://izumisagiri.github.io/H.png" alt="H" /></p>
-<pre><code>void tingzhi()                          //モーターを止める
+</code></pre><p>モータの正逆転制御回路「Hブリッジ回路」</p>
+<p><img src="http://izumisagiri.github.io/H.png" alt="H"></p>
+<pre><code>void tingzhi()                            //モーターを止める
 {
     H1=1;H2=1;H3=1;H4=1;                    //このHブリッジ回路はLowにしたら導通する
-    jdq_zhuangtai = 'g';
+    jdq_zhuangtai = &#39;g&#39;;
 }
-void zhengzhuan()                       //モーターを回転する
+void zhengzhuan()                        //モーターを回転する
 {
-    H3=1;H4=1;                      //安全のためにまずFETを全部ＯＦＦ状態にする
+    H3=1;H4=1;                            //安全のためにまずFETを全部ＯＦＦ状態にする
     delay();
     H1=0;H2=0;
-    zhuan_direct = 'z';                 //ここで二つの有限オートマトンを設置する。方向及び状態を記録する。
-    jdq_zhuangtai = 'k';
+    zhuan_direct = &#39;z&#39;;                    //ここで二つの有限オートマトンを設置する。方向及び状態を記録する。
+    jdq_zhuangtai = &#39;k&#39;;
 }
-void fanzhuan()                         //モーターを逆回転する
+void fanzhuan()                            //モーターを逆回転する
 {
     H1=1;H2=1;
     delay();
     H3=0;H4=0;
-    zhuan_direct = 'f';
-    jdq_zhuangtai = 'k';
+    zhuan_direct = &#39;f&#39;;
+    jdq_zhuangtai = &#39;k&#39;;
 }
-</code></pre>
-<h3>カーテンの状態検出</h3>
+</code></pre><h3 id="-">カーテンの状態検出</h3>
 <p>FSMを使って、モーターの回転べき方向及びカーテン状態を記録できる。カーテンが完全に開かれたあるいは閉められたとき、光電スイッチはLowからHighにしてフラグも変わる。</p>
-<p><img src="http://izumisagiri.github.io/FSM.png" alt="FSM" /></p>
-<h3>カーテンの操作パターンの設計</h3>
+<p><img src="http://izumisagiri.github.io/FSM.png" alt="FSM"></p>
+<h3 id="-">カーテンの操作パターンの設計</h3>
 <p>開く、閉める、停止、再始動、変調の五つの操作パターンを構想する。これらの操作状態を表すため、以下の五つの変数を設置する。</p>
 <blockquote>
-<p>zhuan_stat 回転状態変数<br />
-zhuan_direct 回転方向状態変数<br />
-zhuan_zhuangtai カーテン状態変数<br />
-jdq_zhuangtai Hブリッジ状態変数<br />
-dangban 光電スイッチ状態変数</p>
+<p>zhuan_stat 回転状態変数<br>zhuan_direct 回転方向状態変数<br>zhuan_zhuangtai カーテン状態変数<br>jdq_zhuangtai Hブリッジ状態変数<br>dangban 光電スイッチ状態変数</p>
 </blockquote>
 <p>光電スイッチはLowにしてながら回転状態変数が20にするとモーターを始動させる。</p>
 <p>各操作パターンの流れは以下の流れ図の通りである。</p>
-<p><img src="http://izumisagiri.github.io/control.png" alt="start" />
-<img src="http://izumisagiri.github.io/control2.png" alt="stop" />
-<img src="http://izumisagiri.github.io/control3.png" alt="pause" /></p>
-<hr />
-<h2>通信プロトコールの設計</h2>
+<p><img src="http://izumisagiri.github.io/control.png" alt="start">
+<img src="http://izumisagiri.github.io/control2.png" alt="stop"></p>
+<h2 id="-pause-http-izumisagiri-github-io-control3-png-"><img src="http://izumisagiri.github.io/control3.png" alt="pause"></h2>
+<h2 id="-">通信プロトコールの設計</h2>
 <p>以下の制御文字を定義する。</p>
 <blockquote>
-<p>AckX：転送開始<br />
-GotX：肯定応答<br />
-OpnX：カーテンを開く<br />
-ClsX：カーテンを閉じる<br />
-SttX：モーターを始動する<br />
-PauX：モーターを停止する<br />
-SpeX：速度変調</p>
+<p>AckX：転送開始<br>GotX：肯定応答<br>OpnX：カーテンを開く<br>ClsX：カーテンを閉じる<br>SttX：モーターを始動する<br>PauX：モーターを停止する<br>SpeX：速度変調</p>
 </blockquote>
 <p>通信を補助するためにカウンターも一つ設置する。</p>
 <p>マスター側の送信流れは以下の流れ図の通りである。</p>
-<p><img src="http://izumisagiri.github.io/communication1.png" alt="PC" title="パソコン" /></p>
+<p><img src="http://izumisagiri.github.io/communication1.png" alt="PC" title="パソコン"></p>
 <p>スレーブ側の送信流れは以下の流れ図の通りである。</p>
-<p><img src="http://izumisagiri.github.io/communication2.png" alt="MC" title="マイコン" /></p>
-<hr />
-<h2>中央コントロールソフトウェアの開発</h2>
+<p><img src="http://izumisagiri.github.io/communication2.png" alt="MC" title="マイコン"></p>
+<hr>
+<h2 id="-">中央コントロールソフトウェアの開発</h2>
 <p>本設計はPC02F24をマスター側通信モジュールとして採用し、WLK02F24をスレーブ側通信モジュールとする。開発Microsoft Visual Studioを開発環境とする。</p>
 <p>シリアル通信のためのファンクションクラスSerialControlHelper.cs：</p>
 <pre><code>using System;
@@ -350,64 +330,64 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 
-namespace 物联网中控软件                       //「IoTコントロールソフトウェア」の意味
+namespace IoTコントロールソフトウェア
 {
     public class SerialControlHelper
     {
-        SerialPort sp = null;                       //COMポートをインスタンス化
+        SerialPort sp = null;                            //COMポートをインスタンス化
 
-        public bool SerialPortOpen(string Port)     //COMポートの初期化は成功したかどうかを戻る
+        public bool SerialPortOpen(string Port)            //COMポートの初期化は成功したかどうかを戻る
         {
-            sp = new SerialPort();                  //COMポートをインスタンス化
-            sp.PortName = Port;                 //関数によってポートを決める
-            sp.Parity = Parity.None;                //バリティチェックなし
-            sp.StopBits = StopBits.One;             //ストップビットを1ビットにする
-            sp.BaudRate = 9600;                 //ボーレートを9600にする
-            sp.DataBits = 8;                        //データビットを8ビットにする
+            sp = new SerialPort();                        //COMポートをインスタンス化
+            sp.PortName = Port;                            //関数によってポートを決める
+            sp.Parity = Parity.None;                    //バリティチェックなし
+            sp.StopBits = StopBits.One;                    //ストップビットを1ビットにする
+            sp.BaudRate = 9600;                            //ボーレートを9600にする
+            sp.DataBits = 8;                            //データビットを8ビットにする
             sp.RtsEnable = true;    
             bool successOrNot = true;
             try
             {
-                sp.Open();                          //インスタンス化したポートを開く
+                sp.Open();                                //インスタンス化したポートを開く
             }
             catch
             {
-                successOrNot = false;               //失敗したら「偽」を戻る
+                successOrNot = false;                    //失敗したら「偽」を戻る
             }
-            return successOrNot;                    //戻り値
+            return successOrNot;                        //戻り値
         }
-        public Byte[] SerialData                    //変数SerialDataを定義する。当変数の値を読むとき
-        {                                       //COMポートからのデータを読み込む
-            Get                                 //読み込む
+        public Byte[] SerialData                        //変数SerialDataを定義する。当変数の値を読むとき
+        {                                                //COMポートからのデータを読み込む
+            Get                                            //読み込む
             {
-                string dataTemp = sp.ReadTo(&quot;X&quot;);   //制御文字「X」まで読み込む
-                ASCIIEncoding ae = new ASCIIEncoding();//ASCIIEncodingをインスタンス化する
-                Byte[] dataByte = ae.GetBytes(dataTemp); //マイコンからのASCIIコードを数値にコンバートする
-                return dataByte;                    //戻り値
+                string dataTemp = sp.ReadTo(&quot;X&quot;);        //制御文字「X」まで読み込む
+                ASCIIEncoding ae = new ASCIIEncoding(); //ASCIIEncodingをインスタンス化する
+                Byte[] dataByte = ae.GetBytes(dataTemp);    //マイコンからのASCIIコードを数値にコンバートする
+                return dataByte;                        //戻り値
             }
-            Set                                 //書き込む
+            Set                                            //書き込む
             {
-                Byte[] dataByte = value;            //送信すべきデータを配列dataByteに書き込む
-                int dataLength = dataByte.Length;   //配列のサイズを調べる
+                Byte[] dataByte = value;                //送信すべきデータを配列dataByteに書き込む
+                int dataLength = dataByte.Length;       //配列のサイズを調べる
                 sp.Write(dataByte,0,dataLength);        //シリアルポートに書き込む
             }
         }
-        public bool SetTargetAddress(byte targetAddress) //PC02F24のあて先を切り替える
+        public bool SetTargetAddress(byte targetAddress)    //PC02F24のあて先を切り替える
         {
             this.SerialData = new Byte[] {0x9d, 0x8c, 0x6b, 0x5a, 0xdd, 0x08, 0x01, targetAddress };    //コマンド
             bool successOrNot = false;
-            if (sp.ReadByte() == 0x9d &amp;&amp; sp.ReadByte() == 0x8c &amp;&amp; sp.ReadByte() == 0x6b) successOrNot = true;   //戻り値は「9D 8C 6B」か
-            return successOrNot;                    //戻り値
+            if (sp.ReadByte() == 0x9d &amp;&amp; sp.ReadByte() == 0x8c &amp;&amp; sp.ReadByte() == 0x6b) successOrNot = true;    //戻り値は「9D 8C 6B」か
+            return successOrNot;                        //戻り値
         }
-        public void SendMessage(string messageText) //送信コマンド
+        public void SendMessage(string messageText)        //送信コマンド
         {
             sp.Write(messageText);
         }
-        public void SendAck()                       //Ackを送信する
+        public void SendAck()                            //Ackを送信する
         {
             sp.Write(&quot;AckX&quot;);
         }
-        public bool GetAck()                        //Gotを受信する
+        public bool GetAck()                            //Gotを受信する
         {
             bool gotOrNot = false;
             if (sp.ReadTo(&quot;X&quot;) == &quot;Got&quot;) gotOrNot = true;
@@ -415,11 +395,10 @@ namespace 物联网中控软件                       //「IoTコントロール
         }
     }
 }
-</code></pre>
-<p>以上のクラスはポートの開き、ポートを通じての読み書き、通信あて先の切り替え、Ackの送信とAckの受信のファンクションを実現した。</p>
-<h3>情報提示モジュール</h3>
+</code></pre><p>以上のクラスはポートの開き、ポートを通じての読み書き、通信あて先の切り替え、Ackの送信とAckの受信のファンクションを実現した。</p>
+<h3 id="-">情報提示モジュール</h3>
 <p>環境要素を提示するGUIは以下のようになる。温度、湿度、照度を提示する。</p>
-<p><img src="http://izumisagiri.github.io/GUI.png" alt="environment" title="GUI" /></p>
+<p><img src="http://izumisagiri.github.io/GUI.png" alt="environment" title="GUI"></p>
 <p>プログラムは以下のようになる。</p>
 <pre><code>
 using System;
@@ -430,56 +409,56 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;                             //Threadingはディレーのクラス
+using System.Threading;                                    //Threadingはディレーのクラス
 
-namespace 物联网中控软件
+namespace IoTコントロールソフトウェア
 {
     public partial class Status : Form
     {
-        SerialControlHelper sc = null;                  //前にプログラミングしたクラスをインスタンス化する
-        DatabaseHelper dbh = null;                      //データベースクラスをインスタンス化する
-        bool timerFlag = false;                     //タイマーフラグ
-        public Status()                             //モジュール名
+        SerialControlHelper sc = null;                    //前にプログラミングしたクラスをインスタンス化する
+        DatabaseHelper dbh = null;                        //データベースクラスをインスタンス化する
+        bool timerFlag = false;                            //タイマーフラグ
+        public Status()                                    //モジュール名
         {
             InitializeComponent();
-            sc = new SerialControlHelper();             //クラスをインスタンス化する
-            dbh = new DatabaseHelper();                 //データベースクラスをインスタンス化する
-            sc.SerialPortOpen(&quot;COM4&quot;);                  //COM4を開く
-            dbh.OpenDatabase();                     //データベースに接続する
+            sc = new SerialControlHelper();                //クラスをインスタンス化する
+            dbh = new DatabaseHelper();                    //データベースクラスをインスタンス化する
+            sc.SerialPortOpen(&quot;COM4&quot;);                    //COM4を開く
+            dbh.OpenDatabase();                            //データベースに接続する
             CheckForIllegalCrossThreadCalls = false;        //バックグラウンドが直接にフォアグラウンドのウィジェットを操作することを許可する
-            backgroundWorker1.RunWorkerAsync();         //バックグラウンドを作動させる
+            backgroundWorker1.RunWorkerAsync();            //バックグラウンドを作動させる
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) //バックグラウンド
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)     //バックグラウンド
         {
-            bool successOrNot = sc.SetTargetAddress(0x01); //PC02F24のあて先を成功的に設置したか
-            toolStripStatusLabel1.Text = &quot;设置地址为01：失败&quot;;//まず「失敗した」を表す
-            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为01：成功&quot;;//成功したら「成功した」に切り替える
-            timer1.Start();                         //タイマーをスタートする
-            while (true)                                //バックグラウンドは無限ループに入る
+            bool successOrNot = sc.SetTargetAddress(0x01);               //PC02F24のあて先を成功的に設置したか
+            toolStripStatusLabel1.Text = &quot;あて先を01にセットする：失敗&quot;;            //まず「失敗した」を表す
+            if (successOrNot) toolStripStatusLabel1.Text = &quot;あて先を01にセットする：成功&quot;;    //成功したら「成功した」に切り替える
+            timer1.Start();                                                 //タイマーをスタートする
+            while (true)                                                //バックグラウンドは無限ループに入る
             {
-                if (timerFlag)                          //タイマーフラグは「真」か
+                if (timerFlag)                                            //タイマーフラグは「真」か
                 {
-                    tickLbl.Text += &quot;ha&quot;;               //デバッグのための表示
-                    timerFlag = false;                  //タイマーフラグを「偽」にする
-                    sc.SendAck();                       //Ackを送信する
-                    bool gotOrNot = sc.GetAck();            //Gotを受信したか
-                    if (gotOrNot)                       //受信したら「握手成功」、受信しなかったら「握手失敗」を表す
+                    tickLbl.Text += &quot;ha&quot;;                                //デバッグのための表示
+                    timerFlag = false;                                    //タイマーフラグを「偽」にする
+                    sc.SendAck();                                        //Ackを送信する
+                    bool gotOrNot = sc.GetAck();                           //Gotを受信したか
+                    if (gotOrNot)                                        //受信したら「握手成功」、受信しなかったら「握手失敗」を表す
                         toolStripStatusLabel1.Text += &quot; 握手成功&quot;;
-                    else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
-                    Thread.Sleep(1000);                 //１秒のフリーズが、マイコンを時間を与える所以である
-                    sc.SendAck();                       //Ackを送信する
-                    Byte[] dataByte = sc.SerialData;        //受信したデータを配列dataByteに書き込む
-                    ASCIIEncoding ae = new ASCIIEncoding(); //ASCIIEncodingをインスタンス化する
-                    string tempLblText = ae.GetString(dataByte, 0, 2) + '.' + ae.GetString(dataByte, 2, 1); //マイコンからのデータを「XX.X」のフォーマットにして導入
-                    tempLbl.Text = tempLblText;         //温度値を表す
-                    dbh.RenewData(&quot;Status&quot;, &quot;Temp&quot;, tempLblText);//温度値をデータベースに書き込む
-                    string humLblText = ae.GetString(dataByte, 4, 2) + '%'; //次のデータを「XX%」のフォーマットにして導入
-                    humLbl.Text = humLblText;           //湿度を表す
-                    dbh.RenewData(&quot;Status&quot;, &quot;Hum&quot;, humLblText);//湿度をデータベースに書き込む
-                    string lightLblText = ae.GetString(dataByte, 6, 1); //照度を読み込む
-                    lightLbl.Text = lightLblText;       //照度を表す
-                    dbh.RenewData(&quot;Status&quot;, &quot;Light&quot;, lightLblText);//照度をデータベースに書き込む
+                    else toolStripStatusLabel1.Text += &quot; 握手失敗&quot;;
+                    Thread.Sleep(1000);                                    //１秒のフリーズが、マイコンを時間を与える所以である
+                    sc.SendAck();                                           //Ackを送信する
+                    Byte[] dataByte = sc.SerialData;                    //受信したデータを配列dataByteに書き込む
+                    ASCIIEncoding ae = new ASCIIEncoding();             //ASCIIEncodingをインスタンス化する
+                    string tempLblText = ae.GetString(dataByte, 0, 2) + &#39;.&#39; + ae.GetString(dataByte, 2, 1);    //マイコンからのデータを「XX.X」のフォーマットにして導入
+                    tempLbl.Text = tempLblText;                            //温度値を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Temp&quot;, tempLblText);       //温度値をデータベースに書き込む
+                    string humLblText = ae.GetString(dataByte, 4, 2) + &#39;%&#39;;     //次のデータを「XX%」のフォーマットにして導入
+                    humLbl.Text = humLblText;                               //湿度を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Hum&quot;, humLblText);         //湿度をデータベースに書き込む
+                    string lightLblText = ae.GetString(dataByte, 6, 1);     //照度を読み込む
+                    lightLbl.Text = lightLblText;                        //照度を表す
+                    dbh.RenewData(&quot;Status&quot;, &quot;Light&quot;, lightLblText);     //照度をデータベースに書き込む
                 }
             }
         }
@@ -490,17 +469,12 @@ namespace 物联网中控软件
         }
     }
 }
-</code></pre>
-<h3>カーテンのコントロールモジュール</h3>
+</code></pre><h3 id="-">カーテンのコントロールモジュール</h3>
 <p>カーテンをコントロールするGUIは以下のようになる。状態、速度、カーテンの開き、閉じ、停止、再始動と速度変調が可能になる。</p>
-<p><img src="http://izumisagiri.github.io/GUI2.png" alt="control" title="GUI" /></p>
+<p><img src="http://izumisagiri.github.io/GUI2.png" alt="control" title="GUI"></p>
 <p>以下の変数を設置した。</p>
 <blockquote>
-<p>kaiQiFlag：カーテンを開くフラグ<br />
-guanBiFlag：カーテンを閉じるフラグ<br />
-zanTingFlag：カーテンを停止するフラグ<br />
-tiaoSuFlag：速度変調のフラグ<br />
-qiDongFlag：再始動のフラグ</p>
+<p>kaiQiFlag：カーテンを開くフラグ<br>guanBiFlag：カーテンを閉じるフラグ<br>zanTingFlag：カーテンを停止するフラグ<br>tiaoSuFlag：速度変調のフラグ<br>qiDongFlag：再始動のフラグ</p>
 </blockquote>
 <p>プログラムの一部は以下のようになる。</p>
 <pre><code>using System;
@@ -513,14 +487,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace 物联网中控软件
+namespace IoTコントロールソフトウェア
 {
     public partial class Curtain : Form
     {
-        SerialControlHelper sc = null;                  //シリアルポートクラスをインスタンス化する
-        DatabaseHelper dbh = null;                      //データベースクラスをインスタンス化する
-        bool timerFlag = false;                     //タイマーフラグ
-        bool kaiQiFlag = false;                     //以上のフラグを定義する
+        SerialControlHelper sc = null;                    //シリアルポートクラスをインスタンス化する
+        DatabaseHelper dbh = null;                        //データベースクラスをインスタンス化する
+        bool timerFlag = false;                            //タイマーフラグ
+        bool kaiQiFlag = false;                            //以上のフラグを定義する
         bool guanBiFlag = false;
         bool zanTingFlag = false;
         bool tiaoSuFlag = false;
@@ -528,46 +502,46 @@ namespace 物联网中控软件
         public Curtain()
         {
             InitializeComponent();
-            sc = new SerialControlHelper();             //シリアルポートクラスをインスタンス化する
-            dbh = new DatabaseHelper();                 //データベースクラスをインスタンス化する
-            sc.SerialPortOpen(&quot;COM4&quot;);                  //COM4を開く
-            dbh.OpenDatabase();                     //データベースに接続する
+            sc = new SerialControlHelper();                //シリアルポートクラスをインスタンス化する
+            dbh = new DatabaseHelper();                    //データベースクラスをインスタンス化する
+            sc.SerialPortOpen(&quot;COM4&quot;);                    //COM4を開く
+            dbh.OpenDatabase();                            //データベースに接続する
             CheckForIllegalCrossThreadCalls = false;        //バックグラウンドが直接にフォアグラウンドのウィジェットを操作することを許可する
-            backgroundWorker1.RunWorkerAsync();         //バックグラウンドを作動させる
+            backgroundWorker1.RunWorkerAsync();            //バックグラウンドを作動させる
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            bool successOrNot = sc.SetTargetAddress(0x02); //通信あて先をセットする
-            toolStripStatusLabel1.Text = &quot;设置地址为02：失败&quot;;
-            if (successOrNot) toolStripStatusLabel1.Text = &quot;设置地址为02：成功&quot;;//「成功した」を表す
-            timer1.Start();                         //タイマーをスタートする
+            bool successOrNot = sc.SetTargetAddress(0x02);  //通信あて先をセットする
+            toolStripStatusLabel1.Text = &quot;あて先を02にセットする：失敗&quot;;
+            if (successOrNot) toolStripStatusLabel1.Text = &quot;あて先を02にセットする：成功&quot;;    //「成功した」を表す
+            timer1.Start();                                    //タイマーをスタートする
             while (true)
             {
-                string commandTemp = dbh.commandValue.Trim();//データベースを調べてリモコン端末からの制御文字を読み込む
+                string commandTemp = dbh.commandValue.Trim();   //データベースを調べてリモコン端末からの制御文字を読み込む
                 if (commandTemp == &quot;k&quot;) kaiQiFlag = true;
                 else if (commandTemp == &quot;g&quot;) guanBiFlag = true;
                 else if (commandTemp == &quot;z&quot;) zanTingFlag = true;
                 else if (commandTemp == &quot;t&quot;) tiaoSuFlag = true;
-                else if (commandTemp == &quot;q&quot;) qiDongFlag = true;//制御文字によってフラグを「真」にする
-                label4.Text = commandTemp;                  //デバッグのための表す
-                dbh.RenewData(&quot;Curtain&quot;, &quot;Command&quot;, &quot;0&quot;);       //リモコン端末からの制御文字をデータベースから削除する
+                else if (commandTemp == &quot;q&quot;) qiDongFlag = true; //制御文字によってフラグを「真」にする
+                label4.Text = commandTemp;                        //デバッグのための表す
+                dbh.RenewData(&quot;Curtain&quot;, &quot;Command&quot;, &quot;0&quot;);        //リモコン端末からの制御文字をデータベースから削除する
                 if (kaiQiFlag) KaiQi();
                 else if (guanBiFlag) GuanBi();
                 else if (zanTingFlag) ZanTing();
                 else if (tiaoSuFlag) TiaoSu();
-                else if (qiDongFlag) QiDong();              //フラグによってふさわしいファンクションを行う
-                else if (timerFlag)                         //時間が到着したか
+                else if (qiDongFlag) QiDong();                //フラグによってふさわしいファンクションを行う
+                else if (timerFlag)                            //時間が到着したか
                 {
-                    timerFlag = false;                      //タイマーフラグを「偽」にする
-                    Thread.Sleep(1000);                     //１秒のフリーズが、マイコンを時間を与える所以である
+                    timerFlag = false;                        //タイマーフラグを「偽」にする
+                    Thread.Sleep(1000);                        //１秒のフリーズが、マイコンを時間を与える所以である
                     button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = false;//誤動作防止のため、カーテン状態を求む前にあらゆるボタンを禁止する
-                    sc.SendAck();                           //Ackを送信する
+                    sc.SendAck();                                //Ackを送信する
                     bool gotOrNot = sc.GetAck();                //Gotを受信したか
                     if (gotOrNot) toolStripStatusLabel1.Text += &quot; 握手成功&quot;;
-                    else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
-                    Thread.Sleep(1000);                     //１秒のフリーズ
-                    sc.SendAck();                           //Ackを送信する
+                    else toolStripStatusLabel1.Text += &quot; 握手失敗&quot;;
+                    Thread.Sleep(1000);                        //１秒のフリーズ
+                    sc.SendAck();                            //Ackを送信する
 
                     byte[] dataByte = sc.SerialData;
                     ASCIIEncoding ae = new ASCIIEncoding();
@@ -575,96 +549,96 @@ namespace 物联网中控软件
                     string spd = ae.GetString(dataByte, 1, 1);
                     if (stts == &quot;k&quot;)
                     {
-                        statusLbl.Text = &quot;开启&quot;;
-                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;开启&quot;);
+                        statusLbl.Text = &quot;開く&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;開く&quot;);
                     }
                     else if (stts == &quot;g&quot;)
                     {
-                        statusLbl.Text = &quot;关闭&quot;;
-                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;关闭&quot;);
+                        statusLbl.Text = &quot;閉じる&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;閉じる&quot;);
                     }
                     else if (stts == &quot;y&quot;)
                     {
-                        statusLbl.Text = &quot;运行中&quot;;
-                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;运行中&quot;);
+                        statusLbl.Text = &quot;動作中&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;動作中&quot;);
                     }
                     else if (stts == &quot;t&quot;)
                     {
-                        statusLbl.Text = &quot;暂停中&quot;;
-                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;暂停中&quot;);
+                        statusLbl.Text = &quot;停止&quot;;
+                        dbh.RenewData(&quot;Curtain&quot;, &quot;Curtain&quot;, &quot;停止&quot;);
                     }
                     speedLbl.Text = spd;                    //マイコンからの情報を読み込み、提示する
-                    Thread.Sleep(1000);                     //１秒のフリーズ
-                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = true;  //状態求め完了し、ボタン禁止解除
+                    Thread.Sleep(1000);                        //１秒のフリーズ
+                    button1.Enabled = button2.Enabled = button4.Enabled = speedBtn.Enabled = true;    //状態求め完了し、ボタン禁止解除
                 }
             }
         }
 
         private void KaiQi()                                //カーテンを開くファンクション
         {
-            kaiQiFlag = false;                              //カーテンを開くフラグを「偽」に戻す
-            sc.SendAck();                                   //Ackを送信する
+            kaiQiFlag = false;                                //カーテンを開くフラグを「偽」に戻す
+            sc.SendAck();                                    //Ackを送信する
             bool gotOrNot = sc.GetAck();                    //Gotを受信したか
             if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
-            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
-            Thread.Sleep(1000);                         //１秒のフリーズ
-            sc.SendMessage(&quot;OpnX&quot;);                         //Opnを送信する
-            bool gotOrNot2 = sc.GetAck();                   //Gotを受信したか
-            if (!gotOrNot2) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
-            else toolStripStatusLabel1.Text += &quot; 开启成功&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失敗&quot;;
+            Thread.Sleep(1000);                                //１秒のフリーズ
+            sc.SendMessage(&quot;OpnX&quot;);                            //Opnを送信する
+            bool gotOrNot2 = sc.GetAck();                    //Gotを受信したか
+            if (!gotOrNot2) toolStripStatusLabel1.Text = &quot;警告：応答なし&quot;;
+            else toolStripStatusLabel1.Text += &quot; 開く成功&quot;;
         }
 
-        private void GuanBi()                               //カーテンを閉じるファンクション
+        private void GuanBi()                                //カーテンを閉じるファンクション
         {
             guanBiFlag = false;
             backgroundWorker1.CancelAsync();
             sc.SendAck();
             bool gotOrNot = sc.GetAck();
             if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
-            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失敗&quot;;
             Thread.Sleep(1000);
             sc.SendMessage(&quot;ClsX&quot;);
             gotOrNot = sc.GetAck();
-            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
-            else toolStripStatusLabel1.Text += &quot; 关闭成功&quot;;
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：応答なし&quot;;
+            else toolStripStatusLabel1.Text += &quot; 閉じる成功&quot;;
         }
 
-        private void ZanTing()                              //カーテンを停止するファンクション
+        private void ZanTing()                                //カーテンを停止するファンクション
         {
             zanTingFlag = false;
             backgroundWorker1.CancelAsync();
             sc.SendMessage(&quot;PauX&quot;);
             bool gotOrNot = sc.GetAck();
-            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
-            else toolStripStatusLabel1.Text = &quot; 暂停成功&quot;;
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：応答なし&quot;;
+            else toolStripStatusLabel1.Text = &quot; 停止成功&quot;;
         }
 
-        private void TiaoSu()                               //速度変調のファンクション
+        private void TiaoSu()                                //速度変調のファンクション
         {
             tiaoSuFlag = false;
             backgroundWorker1.CancelAsync();
             sc.SendAck();
             bool gotOrNot = sc.GetAck();
             if (gotOrNot) toolStripStatusLabel1.Text = &quot; 握手成功&quot;;
-            else toolStripStatusLabel1.Text = &quot; 握手失败&quot;;
+            else toolStripStatusLabel1.Text = &quot; 握手失敗&quot;;
             Thread.Sleep(1000);
             sc.SendMessage(&quot;Spe&quot; + numericUpDown1.Value.ToString() + &quot;X&quot;);
             gotOrNot = sc.GetAck();
-            if (gotOrNot) toolStripStatusLabel1.Text += &quot; 设置速度成功&quot;;
-            else toolStripStatusLabel1.Text += &quot; 握手失败&quot;;
+            if (gotOrNot) toolStripStatusLabel1.Text += &quot; 速度変調セット成功&quot;;
+            else toolStripStatusLabel1.Text += &quot; 握手失敗&quot;;
         }
 
-        private void QiDong()                               //再始動のファンクション
+        private void QiDong()                                //再始動のファンクション
         {
             qiDongFlag = false;
             backgroundWorker1.CancelAsync();
             sc.SendMessage(&quot;SttX&quot;);
             bool gotOrNot = sc.GetAck();
-            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：电机无应答&quot;;
-            else toolStripStatusLabel1.Text = &quot; 启动成功&quot;;
+            if (!gotOrNot) toolStripStatusLabel1.Text = &quot;警告：応答なし&quot;;
+            else toolStripStatusLabel1.Text = &quot; 再始動成功&quot;;
         }
 
-        private void button1_Click(object sender, EventArgs e) //ボタンを押したら対応するフラグを「真」にする
+        private void button1_Click(object sender, EventArgs e)      //ボタンを押したら対応するフラグを「真」にする
         {
             kaiQiFlag = true;
         }
@@ -689,21 +663,20 @@ namespace 物联网中控软件
             tiaoSuFlag = true;
         }
 
-        private void timer1_Tick(object sender, EventArgs e) //時間が来たらフラグを「真」にする
+        private void timer1_Tick(object sender, EventArgs e)    //時間が来たらフラグを「真」にする
         {
             timerFlag = true;
         }
     }
 }
-</code></pre>
-<hr />
-<h2>データベースの設計</h2>
+</code></pre><hr>
+<h2 id="-">データベースの設計</h2>
 <p>本設計にとっては、簡単なデータベースが十分である。環境要素はただ温度、湿度と照度の三つであり、カーテンの要素はただ状態とコマンドの二つである。
 データベースは以下のようになる。</p>
-<p><img src="http://izumisagiri.github.io/status.png" alt="status" title="Status" /></p>
-<p><img src="http://izumisagiri.github.io/curtain.png" alt="curtain" title="Curtain" /></p>
-<hr />
-<h2>データベースへの読み書きファンクションの開発</h2>
+<p><img src="http://izumisagiri.github.io/status.png" alt="status" title="Status"></p>
+<p><img src="http://izumisagiri.github.io/curtain.png" alt="curtain" title="Curtain"></p>
+<hr>
+<h2 id="-">データベースへの読み書きファンクションの開発</h2>
 <p>3階層システムを使わなかった。プレゼンテーション層とアプリケーション層を一層にし、データ層を一層にする。
 データベースファンクションのためのクラスDatabaseHelper.csは以下のようになる。</p>
 <pre><code>using System;
@@ -714,25 +687,25 @@ using System.IO.Ports;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace 物联网中控软件
+namespace IoTコントロールソフトウェア
 {
     class DatabaseHelper
     {
         static string connectionString = &quot;Data Source=localhost;Initial Catalog=SmartHomeDatabase;Integrated Security=True&quot;;//ローカルデータベースSmartHomeDatabaseに接続する
-        SqlConnection sc = new SqlConnection(connectionString); //接続をインスタンス化する
-        public void OpenDatabase()                  //データベースを開放する
+        SqlConnection sc = new SqlConnection(connectionString);     //接続をインスタンス化する
+        public void OpenDatabase()                                    //データベースを開放する
         {
             sc.Open();
         }
-        public void RenewData(string dataSet, string dataColumn, string zhi) //データを更新するファンクション
+        public void RenewData(string dataSet, string dataColumn, string zhi)    //データを更新するファンクション
         {
-            SqlCommand sqlCmd = new SqlCommand(&quot;Update &quot; + dataSet + &quot; set &quot; + dataColumn + &quot; = '&quot; + zhi + &quot;'&quot;, sc);    //Sqlコマンドをインスタンス化する
-            sqlCmd.ExecuteNonQuery();               //Sqlコマンドを実行して更新操作が完了する
+            SqlCommand sqlCmd = new SqlCommand(&quot;Update &quot; + dataSet + &quot; set &quot; + dataColumn + &quot; = &#39;&quot; + zhi + &quot;&#39;&quot;, sc);    //Sqlコマンドをインスタンス化する
+            sqlCmd.ExecuteNonQuery();                                //Sqlコマンドを実行して更新操作が完了する
         }
-        private string GetData(string dataSet, string dataColumn) //データを読み込みファンクション
+        private string GetData(string dataSet, string dataColumn)   //データを読み込みファンクション
         {
             SqlCommand scm = new SqlCommand(&quot;select &quot; + dataColumn + &quot; from &quot; + dataSet, sc);
-            return scm.ExecuteScalar().ToString();  //Sqlコマンドをインスタンス化して実行し、結果を戻す
+            return scm.ExecuteScalar().ToString();                    //Sqlコマンドをインスタンス化して実行し、結果を戻す
         }
     public string commandValue
         {
@@ -743,42 +716,41 @@ namespace 物联网中控软件
         }
     }
 }
-</code></pre>
-<hr />
-<h2>ウェブアプリケーションの開発</h2>
+</code></pre><hr>
+<h2 id="-">ウェブアプリケーションの開発</h2>
 <p>3階層システムを使う。LinqDataSourceでアプリケーション層を構築し、DetailsViewでプレゼンテーション層を構築する。
-<img src="http://izumisagiri.github.io/link.png" alt="" /></p>
+<img src="http://izumisagiri.github.io/link.png" alt=""></p>
 <p>環境要素を提示するGUIは以下のようになる。</p>
-<p><img src="http://izumisagiri.github.io/environment.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/environment.png" alt=""></p>
 <p>LinqDataSourceに指定されたデータソースにFormViewの三つのLabelのText属性をバインドする。</p>
-<p><img src="http://izumisagiri.github.io/linqdatasource.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/linqdatasource.png" alt=""></p>
 <p>カーテン監視制御GUIは以下のようになる。</p>
-<p><img src="http://izumisagiri.github.io/widget.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/widget.png" alt=""></p>
 <p>データソースにカーテンを開く、閉じる、停止、再始動及び速度変調のコマンドを挿入する。</p>
-<p><img src="http://izumisagiri.github.io/command.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/linqdatasource2.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/linqdatasourceset.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/linqdatasourcedatasource.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/dropdownlist.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/command.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/linqdatasource2.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/linqdatasourceset.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/linqdatasourcedatasource.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/dropdownlist.png" alt=""></p>
 <p>最後はリリースする。</p>
-<p><img src="http://izumisagiri.github.io/release.png" alt="" /></p>
-<hr />
-<h2>インターネットでリリースする</h2>
+<p><img src="http://izumisagiri.github.io/release.png" alt=""></p>
+<hr>
+<h2 id="-">インターネットでリリースする</h2>
 <p>nat123が提供した無料ドメインを使ってサーバーを構築する。</p>
-<p><img src="http://izumisagiri.github.io/internet.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/internet2.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/internet3.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/internet2.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/internet3.png" alt=""></p>
 <p>インターネットで監視制御が可能になる。</p>
-<p><img src="http://izumisagiri.github.io/internet4.png" alt="" /></p>
+<p><img src="http://izumisagiri.github.io/internet4.png" alt=""></p>
 <p>スマホのスクリーンショット</p>
-<p><img src="http://izumisagiri.github.io/internet5.png" alt="" />
-<img src="http://izumisagiri.github.io/internet6.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/internet7.png" alt="" />
-<img src="http://izumisagiri.github.io/internet8.png" alt="" /></p>
-<p><img src="http://izumisagiri.github.io/internet9.png" alt="" /></p>
-<hr />
-<h1>付録</h1>
-<h3>A 環境監視システムのプログラム</h3>
+<p><img src="http://izumisagiri.github.io/internet5.png" alt="">
+<img src="http://izumisagiri.github.io/internet6.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/internet7.png" alt="">
+<img src="http://izumisagiri.github.io/internet8.png" alt=""></p>
+<p><img src="http://izumisagiri.github.io/internet9.png" alt=""></p>
+<hr>
+<h1 id="-">付録</h1>
+<h3 id="a-">A 環境監視システムのプログラム</h3>
 <pre><code>#include&lt;reg52.h&gt;
 #include&lt;intrins.h&gt;
 #include&lt;math.h&gt;
@@ -954,7 +926,7 @@ void mode0()
     SETA=0;SETB=0;
 }
 void delay()
-{    int i,j;
+{     int i,j;
     for(i = 0;i &lt; 100;i++)for(j = 0;j &lt; 100;j++);
     }
     void send(unsigned char aha)
@@ -973,22 +945,22 @@ void getByte() interrupt 4 using 3
     a = SBUF;
     dataGot[dataGotCount] = a;
     dataGotCount++;
-    if(a == 'X')
+    if(a == &#39;X&#39;)
     {
         dataGotCount = 0;
-        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 0))
+        if((dataGot[0] == &#39;A&#39;) &amp;&amp; (dataGot[1] == &#39;c&#39;) &amp;&amp; (dataGot[2] == &#39;k&#39;) &amp;&amp; (jishu == 0))
         {
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
         }
-        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 1))
+        if((dataGot[0] == &#39;A&#39;) &amp;&amp; (dataGot[1] == &#39;c&#39;) &amp;&amp; (dataGot[2] == &#39;k&#39;) &amp;&amp; (jishu == 1))
         {
         delay();delay();delay();delay();delay();delay();delay();
         send(d1);delay();delay();delay();send(d2);delay();delay();delay();send(d3);delay;delay();delay();
         send(bai);delay(); delay();delay();send(shi);delay();delay();delay();send(ge);delay();delay();delay();
         send(lightASCII);delay;delay();delay();
-        send('1');delay();delay();delay();send('1');delay;delay();delay();send('1');delay(); delay();delay();
-        send('X');delay();
+        send(&#39;1&#39;);delay();delay();delay();send(&#39;1&#39;);delay;delay();delay();send(&#39;1&#39;);delay(); delay();delay();
+        send(&#39;X&#39;);delay();
         jishu--;
         }
     }
@@ -996,7 +968,7 @@ void getByte() interrupt 4 using 3
 }
 
 /////////////////////////Temperature Part///////////////////
-void delayDSMs(unsigned int i)  //??????,?????11.0592M???????????1ms
+void delayDSMs(unsigned int i)
 {
     unsigned int j,k;
 
@@ -1009,13 +981,13 @@ void DS18B20_Reset(void)
 
     DS_Data = 0;
     i = 103;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 
     DS_Data = 1;
     i = 4;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 }
-bit DS18B20_ReadBit(void)   
+bit DS18B20_ReadBit(void)    
 {
     unsigned int i;
     bit dat;
@@ -1028,14 +1000,14 @@ bit DS18B20_ReadBit(void)
     dat = DS_Data;
 
     i = 8;
-    while(i&gt;0)  i--;
+    while(i&gt;0)    i--;
 
     return (dat);
 }
 uchar DS18B20_ReadByte(void)    
 {
     unsigned char i,j,dat;
-    
+
     dat=0;
     for(i=1; i&lt;=8; i++)
     {
@@ -1045,7 +1017,7 @@ uchar DS18B20_ReadByte(void)
 
     return(dat);
 }
-void DS18B20_WriteByte(unsigned char dat)   
+void DS18B20_WriteByte(unsigned char dat)    
 {
     unsigned int i;
     unsigned char j, k;
@@ -1057,7 +1029,7 @@ void DS18B20_WriteByte(unsigned char dat)
     {
         b = k &amp; 0x01;
         k = k &gt;&gt; 1;
-        if(b)                   //write 1
+        if(b)                     //write 1
         {
             DS_Data = 0;
             i++; i++;
@@ -1067,41 +1039,41 @@ void DS18B20_WriteByte(unsigned char dat)
         }
         else
         {
-            DS_Data = 0;            //write 0
+            DS_Data = 0;               //write 0
             i = 8;
-            while(i&gt;0)  i--;
+            while(i&gt;0)    i--;
             DS_Data = 1;
             i++; i++;
         }
-    
+
     }
 }
-void DS18B20_Change(void)   
+void DS18B20_Change(void)    
 {
     DS18B20_Reset();
     delayDSMs(5);
-    DS18B20_WriteByte(0xcc);     // address all drivers on bus
-    DS18B20_WriteByte(0x44);    //  initiates a single temperature conversion  
+    DS18B20_WriteByte(0xcc);      // address all drivers on bus
+    DS18B20_WriteByte(0x44);      //  initiates a single temperature conversion  
 }
-int DS18B20_GetTemp()           //get the temperature
+int DS18B20_GetTemp()            //get the temperature
 {
     float t;
     unsigned char a, b;
     int temp;
-    
+
     DS18B20_Reset();
     delayDSMs(5);
     DS18B20_WriteByte(0xcc);
     DS18B20_WriteByte(0xbe);
     a=DS18B20_ReadByte();
     b=DS18B20_ReadByte();
-    
+
     temp = b;
     temp &lt;&lt;= 8;                     //two byte  compose a int variable
     temp = temp|a;
     t = temp*0.0625;
     temp = t*10+0.5;
-    
+
     return temp;
 }
 
@@ -1133,7 +1105,7 @@ void main()
         P1=tempAD;
         bai=(tempAD*196/300/100)%10 + 0x30;
         shi=(tempAD*196/300/10)%10 + 0x30;
-        ge=(tempAD*196/300)%10 + 0x30;     
+        ge=(tempAD*196/300)%10 + 0x30;       
         /////Temperature Run Part/////////
         DS18B20_Change();
         tempDS = DS18B20_GetTemp();
@@ -1145,8 +1117,7 @@ void main()
         lightASCII = lighttemp + 0x30;
     }
 }
-</code></pre>
-<h3>B カーテン監視制御プログラム</h3>
+</code></pre><h3 id="b-">B カーテン監視制御プログラム</h3>
 <pre><code>#include&lt;reg52.h&gt;
 ///////////Test Define Part//////////
 /////////Send Define Part///////////
@@ -1157,11 +1128,11 @@ int i;
 int jishu;
 char dataGot[10] = {0,0,0,0,0,0,0,0,0,0};
 int dataGotCount;
-/////////Curtain Define Part///////////////     `
+/////////Curtain Define Part///////////////        `
 int zhuan_stat;
 char zhuan_direct,zhuan_zhuangtai,jdq_zhuangtai;
 int PWMzhi;
-sbit OUT=P0^0;                              
+sbit OUT=P0^0;                                
 sbit H1=P0^3;
 sbit H2=P0^4;
 sbit H3=P0^5;
@@ -1179,7 +1150,7 @@ void mode0()
     SETA=0;SETB=0;
 }
 void delay()
-{    int i,j;
+{     int i,j;
     for(i = 0;i &lt; 100;i++)for(j = 0;j &lt; 100;j++);
     }
     void send(unsigned char aha)
@@ -1197,50 +1168,50 @@ void getByte() interrupt 4 using 3
     a = SBUF;
     dataGot[dataGotCount] = a;
     dataGotCount++;
-    if(a == 'X')
+    if(a == &#39;X&#39;)
     {
         dataGotCount = 0;
-        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 0))
+        if((dataGot[0] == &#39;A&#39;) &amp;&amp; (dataGot[1] == &#39;c&#39;) &amp;&amp; (dataGot[2] == &#39;k&#39;) &amp;&amp; (jishu == 0))
         {
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu++;
         }
-        if((dataGot[0] == 'A') &amp;&amp; (dataGot[1] == 'c') &amp;&amp; (dataGot[2] == 'k') &amp;&amp; (jishu == 1))
+        if((dataGot[0] == &#39;A&#39;) &amp;&amp; (dataGot[1] == &#39;c&#39;) &amp;&amp; (dataGot[2] == &#39;k&#39;) &amp;&amp; (jishu == 1))
         {
         delay();delay();delay();delay();delay();delay();delay();
-        send(zhuan_zhuangtai);delay();delay();delay();send(PWMzhi + 0x30);delay(); delay();delay();send('X');delay(); jishu--;
+        send(zhuan_zhuangtai);delay();delay();delay();send(PWMzhi + 0x30);delay(); delay();delay();send(&#39;X&#39;);delay(); jishu--;
         }
-                if((dataGot[0] == 'O') &amp;&amp; (dataGot[1] == 'p') &amp;&amp; (dataGot[2] == 'n') &amp;&amp; (jishu == 1))
+                if((dataGot[0] == &#39;O&#39;) &amp;&amp; (dataGot[1] == &#39;p&#39;) &amp;&amp; (dataGot[2] == &#39;n&#39;) &amp;&amp; (jishu == 1))
         {
         zhuan_stat = 20;zhengzhuan();
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
         for(PWMCOUNT = 0;PWMCOUNT &lt; 20;PWMCOUNT++)PWM(PWMzhi);
         }
-                        if((dataGot[0] == 'C') &amp;&amp; (dataGot[1] == 'l') &amp;&amp; (dataGot[2] == 's') &amp;&amp; (jishu == 1))
+                        if((dataGot[0] == &#39;C&#39;) &amp;&amp; (dataGot[1] == &#39;l&#39;) &amp;&amp; (dataGot[2] == &#39;s&#39;) &amp;&amp; (jishu == 1))
         {
         zhuan_stat = 20;fanzhuan();
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
         for(PWMCOUNT = 0;PWMCOUNT &lt; 20;PWMCOUNT++)PWM(PWMzhi);
         }
-                                if((dataGot[0] == 'S') &amp;&amp; (dataGot[1] == 't') &amp;&amp; (dataGot[2] == 't') &amp;&amp; (jishu == 0))
+                                if((dataGot[0] == &#39;S&#39;) &amp;&amp; (dataGot[1] == &#39;t&#39;) &amp;&amp; (dataGot[2] == &#39;t&#39;) &amp;&amp; (jishu == 0))
         {
         zhuan_stat = 20;
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;
         }
-                        if((dataGot[0] == 'P') &amp;&amp; (dataGot[1] == 'a') &amp;&amp; (dataGot[2] == 'u') &amp;&amp; (jishu == 0))
+                        if((dataGot[0] == &#39;P&#39;) &amp;&amp; (dataGot[1] == &#39;a&#39;) &amp;&amp; (dataGot[2] == &#39;u&#39;) &amp;&amp; (jishu == 0))
         {
         zhuan_stat = 0;tingzhi();
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;
         }
-                        if((dataGot[0] == 'S') &amp;&amp; (dataGot[1] == 'p') &amp;&amp; (dataGot[2] == 'e') &amp;&amp; (jishu == 1))
+                        if((dataGot[0] == &#39;S&#39;) &amp;&amp; (dataGot[1] == &#39;p&#39;) &amp;&amp; (dataGot[2] == &#39;e&#39;) &amp;&amp; (jishu == 1))
         {
                 PWMzhi = (int)dataGot[3] - 0x30;
         delay();delay();delay();delay();delay();delay();delay();delay();delay();delay(); delay();delay();delay();delay();delay();delay();delay();delay();delay();delay();
-        send('G');send('o');send('t');send('X');dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
+        send(&#39;G&#39;);send(&#39;o&#39;);send(&#39;t&#39;);send(&#39;X&#39;);dataGot[0] = dataGot[1] = dataGot[2] = 0;jishu--;
         }
     }
     EA=1;RI=0;
@@ -1249,23 +1220,23 @@ void getByte() interrupt 4 using 3
 void tingzhi()
 {
     H1=1;H2=1;H3=1;H4=1;
-    jdq_zhuangtai = 'g';
+    jdq_zhuangtai = &#39;g&#39;;
 }
 void zhengzhuan()
 {
     H3=1;H4=1;
     delay();
     H1=0;H2=0;
-    zhuan_direct = 'z';
-    jdq_zhuangtai = 'k';
+    zhuan_direct = &#39;z&#39;;
+    jdq_zhuangtai = &#39;k&#39;;
 }
 void fanzhuan()
 {
     H1=1;H2=1;
     delay();
     H3=0;H4=0;
-    zhuan_direct = 'f';
-    jdq_zhuangtai = 'k';
+    zhuan_direct = &#39;f&#39;;
+    jdq_zhuangtai = &#39;k&#39;;
 }
 
 
@@ -1295,7 +1266,7 @@ void main()
     OUT=0;
     PWMzhi=9;
     zhuan_stat=0;
-    zhuan_zhuangtai = 'w';
+    zhuan_zhuangtai = &#39;w&#39;;
     zhengzhuan();
     zhuan_stat = 20;
     while(1)
@@ -1303,17 +1274,17 @@ void main()
         if((zhuan_stat == 20) &amp;&amp; (dangban == 0))P2 = 0;else P2 = 0xff;
         if((zhuan_stat == 20) &amp;&amp; (dangban == 0))
         {
-            if(jdq_zhuangtai == 'g')
+            if(jdq_zhuangtai == &#39;g&#39;)
             {
-                if(zhuan_direct == 'z')zhengzhuan();
-                else if(zhuan_direct == 'f')fanzhuan();
+                if(zhuan_direct == &#39;z&#39;)zhengzhuan();
+                else if(zhuan_direct == &#39;f&#39;)fanzhuan();
             }
             PWM(PWMzhi);
-            zhuan_zhuangtai = 'y';
+            zhuan_zhuangtai = &#39;y&#39;;
         }
-        else if((zhuan_direct == 'z') &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = 'k';}
-        else if((zhuan_direct == 'f') &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = 'g';}
-        else {OUT=0;tingzhi();zhuan_zhuangtai = 't';}
+        else if((zhuan_direct == &#39;z&#39;) &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = &#39;k&#39;;}
+        else if((zhuan_direct == &#39;f&#39;) &amp;&amp; (dangban == 1)){OUT=0;tingzhi();zhuan_zhuangtai = &#39;g&#39;;}
+        else {OUT=0;tingzhi();zhuan_zhuangtai = &#39;t&#39;;}
     }
 }
 </code></pre>
